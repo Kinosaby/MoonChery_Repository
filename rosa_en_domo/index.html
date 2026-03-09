@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosa para Ti</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{
+  width:100%;height:100%;
+  background:#060305;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+}
+.ambient{
+  position:fixed;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 52% 55% at 50% 44%,
+    rgba(255,20,90,0.06) 0%,transparent 68%);
+  animation:amb 4s ease-in-out infinite alternate;
+}
+@keyframes amb{from{opacity:.65}to{opacity:1}}
+.scene{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px;}
+.dome-wrap{
+  position:relative;
+  width:min(320px,78vw);
+  height:min(460px,112vw);
+  animation:floatY 5.5s ease-in-out infinite;
+}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+.dome-shadow{
+  position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);
+  width:65%;height:16px;
+  background:radial-gradient(ellipse,rgba(255,20,90,0.30) 0%,transparent 70%);
+  filter:blur(7px);
+  animation:shY 5.5s ease-in-out infinite;
+}
+@keyframes shY{0%,100%{opacity:.65;transform:translateX(-50%) scaleX(.92)}50%{opacity:1;transform:translateX(-50%) scaleX(1.08)}}
+canvas{position:absolute;inset:0;width:100%;height:100%;}
+.msg{text-align:center;animation:fadeUp 2s 2.2s ease both;}
+.msg-main{font-style:italic;font-weight:300;font-size:clamp(1rem,3.6vw,1.3rem);color:rgba(255,120,165,0.92);letter-spacing:.1em;text-shadow:0 0 18px rgba(255,40,110,0.7),0 0 45px rgba(255,0,80,0.28);}
+.msg-sub{margin-top:5px;font-size:clamp(.68rem,2vw,.88rem);color:rgba(255,65,125,0.5);letter-spacing:.24em;text-transform:uppercase;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="scene">
+  <div class="dome-wrap">
+    <div class="dome-shadow"></div>
+    <canvas id="c"></canvas>
+  </div>
+  <div class="msg">
+    <div class="msg-main">Para ti, con todo mi amor</div>
+    <div class="msg-sub">✦ &nbsp; siempre &nbsp; ✦</div>
+  </div>
+</div>
+<script>
+const CV  = document.getElementById('c');
+const CTX = CV.getContext('2d');
+
+function resize(){
+  CV.width  = CV.offsetWidth  * devicePixelRatio;
+  CV.height = CV.offsetHeight * devicePixelRatio;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ── Particles ─────────────────────────────────────────────
+const PARTS = Array.from({length:30}, () => spawnPart({}));
+function spawnPart(p){
+  p.x    = .18 + Math.random()*.64;
+  p.y    = .48 + Math.random()*.36;
+  p.vx   = (Math.random()-.5)*.0013;
+  p.vy   = (Math.random()-.5)*.001 - .0001;
+  p.life = Math.random();
+  p.max  = .55 + Math.random()*.9;
+  p.r    = .006 + Math.random()*.013;
+  return p;
+}
+
+// ── Rose petal helper ─────────────────────────────────────
+// Draws one rose petal centered at origin, pointing upward,
+// then rotated to position. Shape: rounded teardrop.
+function rosePetal(c, len, wid, glow, fillColor, edgeColor, pulse){
+  // outer glow pass
+  c.save();
+  c.shadowColor = glow; c.shadowBlur = 22*pulse;
+  c.fillStyle   = fillColor;
+  c.beginPath();
+  c.moveTo(0, 0);
+  c.bezierCurveTo(-wid*.62, -len*.18,  -wid*.68, -len*.65,  0, -len);
+  c.bezierCurveTo( wid*.68, -len*.65,   wid*.62, -len*.18,  0,  0);
+  c.closePath();
+  c.fill();
+  // edge stroke
+  c.shadowColor = edgeColor; c.shadowBlur = 8*pulse;
+  c.strokeStyle = edgeColor; c.lineWidth   = 1.4;
+  c.stroke();
+  c.restore();
+}
+
+// ── Full rose drawing ─────────────────────────────────────
+function drawRose(c, W, H, T, ipe){
+  const pulse = .86 + .14*Math.sin(T*1.4);
+  const sway  = Math.sin(T*.72) * .024;
+
+  // Rose center on canvas
+  const rX = W*.5, rY = H*.36;
+
+  c.save();
+  c.translate(rX, rY);
+  c.rotate(sway);
+
+  // ── PETAL COLORS ──
+  const DEEP    = (a) => `rgba(200,0,72,${a})`;
+  const MID     = (a) => `rgba(242,15,90,${a})`;
+  const BRIGHT  = (a) => `rgba(255,55,120,${a})`;
+  const EDGE    = `rgba(255,110,165,${.65*pulse})`;
+  const GLOW    = '#FF1060';
+
+  // Scale
+  const S = W * .0038;
+
+  // ────────────────────────────────────────────────────────
+  // LAYER 0 — outermost guard petals (5 large, fully open)
+  // ────────────────────────────────────────────────────────
+  for(let i=0;i<5;i++){
+    const ang = (i/5)*Math.PI*2 + .3;
+    c.save();
+    c.rotate(ang);
+    // gradient aligned outward
+    const g = c.createLinearGradient(0, 0, 0, -95*S);
+    g.addColorStop(0,   DEEP(.95));
+    g.addColorStop(.35, MID(.92));
+    g.addColorStop(.72, BRIGHT(.88));
+    g.addColorStop(1,   `rgba(255,80,140,.60)`);
+    c.shadowColor=GLOW; c.shadowBlur=26*pulse;
+    c.fillStyle=g;
+    c.beginPath();
+    c.moveTo(0,0);
+    c.bezierCurveTo(-28*S, -18*S,  -32*S, -68*S,  0, -95*S);
+    c.bezierCurveTo( 32*S, -68*S,   28*S, -18*S,  0,  0);
+    c.closePath();
+    c.fill();
+    c.shadowColor=EDGE; c.shadowBlur=7; c.strokeStyle=EDGE; c.lineWidth=1.2;
+    c.stroke();
+    // midrib vein
+    c.globalAlpha=.28; c.strokeStyle='rgba(255,180,210,.8)'; c.lineWidth=.7; c.shadowBlur=3;
+    c.beginPath(); c.moveTo(0,0); c.lineTo(0,-90*S); c.stroke();
+    c.restore();
+  }
+
+  // ────────────────────────────────────────────────────────
+  // LAYER 1 — second ring (5 petals, slightly shorter, offset)
+  // ────────────────────────────────────────────────────────
+  for(let i=0;i<5;i++){
+    const ang = (i/5)*Math.PI*2 + Math.PI/5 + .1;
+    c.save();
+    c.rotate(ang);
+    const g = c.createLinearGradient(0,0,0,-76*S);
+    g.addColorStop(0,   DEEP(.97));
+    g.addColorStop(.3,  MID(.94));
+    g.addColorStop(.7,  BRIGHT(.9));
+    g.addColorStop(1,   `rgba(255,90,150,.65)`);
+    c.shadowColor=GLOW; c.shadowBlur=20*pulse;
+    c.fillStyle=g;
+    c.beginPath();
+    c.moveTo(0,0);
+    c.bezierCurveTo(-22*S,-14*S, -26*S,-56*S,  0,-76*S);
+    c.bezierCurveTo( 26*S,-56*S,  22*S,-14*S,  0,  0);
+    c.closePath();
+    c.fill();
+    c.shadowColor=EDGE; c.shadowBlur=6; c.strokeStyle=EDGE; c.lineWidth=1.1;
+    c.stroke();
+    c.restore();
+  }
+
+  // ────────────────────────────────────────────────────────
+  // LAYER 2 — cupped petals (5, shorter, more closed/curved)
+  // ────────────────────────────────────────────────────────
+  for(let i=0;i<5;i++){
+    const ang = (i/5)*Math.PI*2 + .55;
+    c.save();
+    c.rotate(ang);
+    const g = c.createLinearGradient(0,0,0,-55*S);
+    g.addColorStop(0,  DEEP(.98));
+    g.addColorStop(.4, MID(.96));
+    g.addColorStop(1,  BRIGHT(.85));
+    c.shadowColor=GLOW; c.shadowBlur=16*pulse;
+    c.fillStyle=g;
+    // more cupped: wider control points → curve inward at top
+    c.beginPath();
+    c.moveTo(0,0);
+    c.bezierCurveTo(-20*S,-8*S,  -18*S,-45*S,  0,-55*S);
+    c.bezierCurveTo( 18*S,-45*S,  20*S,-8*S,   0,  0);
+    c.closePath();
+    c.fill();
+    c.shadowColor=EDGE; c.shadowBlur=5; c.strokeStyle=EDGE; c.lineWidth=1;
+    c.stroke();
+    c.restore();
+  }
+
+  // ────────────────────────────────────────────────────────
+  // LAYER 3 — inner spiral petals (4, tightly wound)
+  // ────────────────────────────────────────────────────────
+  for(let i=0;i<4;i++){
+    const ang = (i/4)*Math.PI*2 + .8 + T*.08; // very slow rotation
+    c.save();
+    c.rotate(ang);
+    const g = c.createLinearGradient(0,0,0,-35*S);
+    g.addColorStop(0, `rgba(230,5,80,.98)`);
+    g.addColorStop(.5,`rgba(255,50,115,.95)`);
+    g.addColorStop(1, `rgba(255,110,160,.80)`);
+    c.shadowColor='#FF2070'; c.shadowBlur=14*pulse;
+    c.fillStyle=g;
+    c.beginPath();
+    c.moveTo(0,0);
+    c.bezierCurveTo(-13*S,-5*S, -12*S,-28*S, 0,-35*S);
+    c.bezierCurveTo( 12*S,-28*S,  13*S,-5*S, 0,  0);
+    c.closePath();
+    c.fill();
+    c.restore();
+  }
+
+  // ────────────────────────────────────────────────────────
+  // CENTER — glowing heart of the rose
+  // ────────────────────────────────────────────────────────
+  // outer corona
+  const cg1 = c.createRadialGradient(0,0,0,0,0,20*S);
+  cg1.addColorStop(0, `rgba(255,80,140,${.55*pulse})`);
+  cg1.addColorStop(1, 'rgba(0,0,0,0)');
+  c.shadowBlur=0; c.fillStyle=cg1;
+  c.beginPath(); c.arc(0,0,20*S,0,Math.PI*2); c.fill();
+
+  // center disc
+  c.shadowColor='#FF3090'; c.shadowBlur=18*pulse;
+  const cg2 = c.createRadialGradient(-4*S,-4*S,0, 0,0,13*S);
+  cg2.addColorStop(0, 'rgba(255,160,200,.98)');
+  cg2.addColorStop(.4,'rgba(255,40,110,.97)');
+  cg2.addColorStop(1, 'rgba(180,0,65,.90)');
+  c.fillStyle=cg2;
+  c.beginPath(); c.arc(0,0,13*S,0,Math.PI*2); c.fill();
+
+  // center specular highlight
+  c.save(); c.globalAlpha=.45*pulse;
+  const hl=c.createRadialGradient(-4*S,-5*S,0,-3*S,-4*S,7*S);
+  hl.addColorStop(0,'rgba(255,220,235,.80)'); hl.addColorStop(1,'rgba(0,0,0,0)');
+  c.shadowBlur=0; c.fillStyle=hl;
+  c.beginPath(); c.arc(-3*S,-4*S,7*S,0,Math.PI*2); c.fill();
+  c.restore();
+
+  c.restore(); // end sway
+}
+
+// ── Sepals ────────────────────────────────────────────────
+function drawSepals(c, W, H, T, ipe){
+  const rX=W*.5, rY=H*.36;
+  const S=W*.0038, pulse=.88+.12*Math.sin(T*1.4);
+  const sepalBaseY = rY + 14*S;
+  const sway=Math.sin(T*.72)*.024;
+
+  c.save(); c.translate(rX, sepalBaseY); c.rotate(sway);
+
+  function sepal(rot, len, wid){
+    c.save(); c.rotate(rot);
+    const g=c.createLinearGradient(0,0,0,len*S);
+    g.addColorStop(0,'rgba(0,185,65,0.95)');
+    g.addColorStop(.5,'rgba(0,150,50,0.90)');
+    g.addColorStop(1,'rgba(0,105,30,0.75)');
+    c.shadowColor='rgba(0,230,80,0.75)'; c.shadowBlur=12*pulse;
+    c.fillStyle=g;
+    c.beginPath(); c.moveTo(0,0);
+    c.bezierCurveTo(-wid*S*.5, len*S*.3, -wid*S*.8, len*S*.7,  -wid*S*.3, len*S);
+    c.bezierCurveTo( wid*S*.05,len*S*.8,  wid*S*.05,len*S*.3,  0,0);
+    c.fill();
+    c.shadowColor='rgba(80,255,110,0.55)'; c.shadowBlur=5;
+    c.strokeStyle='rgba(60,230,90,0.5)'; c.lineWidth=.9; c.stroke();
+    c.restore();
+  }
+
+  // 5 sepals spread around base
+  sepal(-1.1, 38, 14);
+  sepal(-.45, 42, 16);
+  sepal( .10, 40, 15);
+  sepal( .65, 42, 16);
+  sepal( 1.1, 38, 14);
+  c.restore();
+}
+
+// ── Stem ──────────────────────────────────────────────────
+function drawStem(c, W, H, T){
+  const S=W*.0038;
+  const rX=W*.5, sepalY=H*.36+14*S;
+  const sway=Math.sin(T*.72)*W*.016;
+  const botX=rX+W*.012, botY=H*.826;
+  const pulse=.88+.12*Math.sin(T*1.4);
+
+  c.save();
+  // glow
+  c.shadowColor='rgba(0,210,70,0.65)'; c.shadowBlur=14;
+  c.strokeStyle='rgba(0,55,18,0.45)'; c.lineWidth=8; c.lineCap='round';
+  c.beginPath();
+  c.moveTo(rX+sway*.15, sepalY);
+  c.bezierCurveTo(rX+sway*.35,sepalY+H*.14, botX+sway*.55,botY-H*.12, botX,botY);
+  c.stroke();
+  // main
+  const sg=c.createLinearGradient(0,sepalY,0,botY);
+  sg.addColorStop(0,'rgba(20,185,60,0.95)'); sg.addColorStop(.5,'rgba(10,145,42,0.9)'); sg.addColorStop(1,'rgba(5,85,22,0.85)');
+  c.shadowColor='rgba(60,240,95,0.45)'; c.shadowBlur=7;
+  c.strokeStyle=sg; c.lineWidth=3.8;
+  c.beginPath();
+  c.moveTo(rX+sway*.15,sepalY);
+  c.bezierCurveTo(rX+sway*.35,sepalY+H*.14,botX+sway*.55,botY-H*.12,botX,botY);
+  c.stroke();
+  // highlight
+  c.shadowBlur=2; c.strokeStyle='rgba(130,255,145,0.25)'; c.lineWidth=1.1;
+  c.beginPath();
+  c.moveTo(rX+sway*.15,sepalY);
+  c.bezierCurveTo(rX+sway*.35,sepalY+H*.14,botX+sway*.55,botY-H*.12,botX,botY);
+  c.stroke();
+  // bottom curl
+  c.shadowColor='rgba(50,200,75,0.55)'; c.shadowBlur=7;
+  c.strokeStyle='rgba(35,160,58,0.72)'; c.lineWidth=2.2;
+  c.beginPath();
+  c.moveTo(botX,botY);
+  c.bezierCurveTo(botX-W*.038,botY+H*.038, botX+W*.022,botY+H*.058, botX+W*.015,botY+H*.047);
+  c.stroke();
+  c.restore();
+}
+
+// ── Dome glass ────────────────────────────────────────────
+function drawDome(c, W, H){
+  const domeSide=W*.04, domeTop=H*.032;
+  const domeBot=H*.868, baseH=H*.065;
+  const cx_=W*.5;
+  const archR=cx_-domeSide;
+
+  // dome path
+  const dp=new Path2D();
+  dp.moveTo(domeSide, domeBot);
+  dp.lineTo(domeSide, archR+domeTop);
+  dp.arc(cx_, archR+domeTop, archR, Math.PI, 0, false);
+  dp.lineTo(W-domeSide, domeBot);
+  dp.closePath();
+
+  // glass fill tint
+  c.save();
+  c.fillStyle='rgba(255,255,255,0.016)';
+  c.fill(dp);
+
+  // edge
+  const eg=c.createLinearGradient(0,0,W,0);
+  eg.addColorStop(0,  'rgba(255,255,255,0.30)');
+  eg.addColorStop(.1, 'rgba(255,255,255,0.08)');
+  eg.addColorStop(.5, 'rgba(255,255,255,0.025)');
+  eg.addColorStop(.9, 'rgba(255,255,255,0.09)');
+  eg.addColorStop(1,  'rgba(255,255,255,0.28)');
+  c.strokeStyle=eg; c.lineWidth=3.2;
+  c.shadowColor='rgba(255,255,255,0.18)'; c.shadowBlur=7;
+  c.stroke(dp);
+
+  // inner left shimmer
+  c.strokeStyle='rgba(255,255,255,0.11)'; c.lineWidth=1.4; c.shadowBlur=4;
+  c.beginPath();
+  c.moveTo(domeSide+W*.025, domeBot*.68);
+  c.bezierCurveTo(domeSide+W*.018,H*.38, domeSide+W*.04,H*.2, cx_-W*.26,domeTop+H*.06);
+  c.stroke();
+  c.restore();
+
+  // base
+  c.save();
+  const bg=c.createLinearGradient(0,domeBot,0,domeBot+baseH);
+  bg.addColorStop(0,'rgba(75,75,88,0.97)'); bg.addColorStop(.45,'rgba(52,52,63,0.97)'); bg.addColorStop(1,'rgba(28,28,35,1)');
+  c.shadowBlur=0; c.fillStyle=bg;
+  c.beginPath();
+  c.roundRect(domeSide-2, domeBot, W-domeSide*2+4, baseH, [0,0,6,6]);
+  c.fill();
+  c.strokeStyle='rgba(255,255,255,0.10)'; c.lineWidth=1; c.stroke();
+  // base highlight stripe
+  c.fillStyle='rgba(255,255,255,0.07)';
+  c.beginPath(); c.roundRect(domeSide+W*.07,domeBot+baseH*.1, W*.28,baseH*.28,3); c.fill();
+  c.restore();
+
+  return dp; // return for clipping
+}
+
+// ── Render loop ───────────────────────────────────────────
+let t0=null, lastF=0;
+const FMS=1000/60;
+
+function render(ts){
+  requestAnimationFrame(render);
+  const dt=ts-lastF; if(dt<FMS*.85) return;
+  lastF=ts-(dt%FMS);
+  if(!t0) t0=ts;
+  const T=(ts-t0)*.001;
+  const ipe=Math.min(1, 1-(Math.pow(1-Math.min(1,T/2.2),3))); // easeOut intro
+
+  const W=CV.width, H=CV.height;
+  CTX.clearRect(0,0,W,H);
+
+  // bg
+  const bg=CTX.createRadialGradient(W*.5,H*.34,0,W*.5,H*.5,H*.6);
+  bg.addColorStop(0,'#180610'); bg.addColorStop(.4,'#0d0308'); bg.addColorStop(1,'#040104');
+  CTX.fillStyle=bg; CTX.fillRect(0,0,W,H);
+
+  // dome background inside
+  const domeSide=W*.04, domeTop=H*.032, archR=W*.5-domeSide;
+  const domePath=new Path2D();
+  domePath.moveTo(domeSide,H*.868);
+  domePath.lineTo(domeSide,archR+domeTop);
+  domePath.arc(W*.5,archR+domeTop,archR,Math.PI,0,false);
+  domePath.lineTo(W-domeSide,H*.868);
+  domePath.closePath();
+
+  CTX.save(); CTX.clip(domePath);
+
+  // inner dark bg
+  const ibg=CTX.createRadialGradient(W*.5,H*.34,0,W*.5,H*.48,H*.52);
+  ibg.addColorStop(0,'#1e0812'); ibg.addColorStop(.5,'#0e0408'); ibg.addColorStop(1,'#050103');
+  CTX.fillStyle=ibg; CTX.fillRect(0,0,W,H);
+
+  // ambient rose glow inside
+  const ag=CTX.createRadialGradient(W*.5,H*.36,0,W*.5,H*.38,H*.38);
+  ag.addColorStop(0,`rgba(255,20,80,${.09*ipe})`);
+  ag.addColorStop(.5,`rgba(180,0,55,${.04*ipe})`);
+  ag.addColorStop(1,'rgba(0,0,0,0)');
+  CTX.fillStyle=ag; CTX.fillRect(0,0,W,H);
+
+  // particles
+  CTX.save(); CTX.globalAlpha=Math.min(1,ipe*1.3);
+  PARTS.forEach(p=>{
+    p.life+=.007; p.x+=p.vx; p.y+=p.vy;
+    if(p.life>p.max) spawnPart(p);
+    const a=(p.life<.14?p.life/.14:p.life>p.max*.76?(1-(p.life-p.max*.76)/(p.max*.24)):1)*.85;
+    CTX.save(); CTX.globalAlpha=a;
+    CTX.shadowColor='#FF1464'; CTX.shadowBlur=9;
+    CTX.fillStyle='#FF3878';
+    CTX.beginPath(); CTX.arc(p.x*W,p.y*H,p.r*W,0,Math.PI*2); CTX.fill();
+    CTX.restore();
+  });
+  CTX.restore();
+
+  // stem (draw first, behind rose)
+  CTX.save(); CTX.globalAlpha=ipe;
+  drawStem(CTX,W,H,T);
+  drawSepals(CTX,W,H,T,ipe);
+  CTX.restore();
+
+  // rose (blooms in)
+  CTX.save(); CTX.globalAlpha=ipe;
+  const sc=.08+.92*ipe;
+  CTX.translate(W*.5,H*.36); CTX.scale(sc,sc); CTX.translate(-W*.5,-H*.36);
+  drawRose(CTX,W,H,T,ipe);
+  CTX.restore();
+
+  CTX.restore(); // end clip
+
+  // glass dome (on top)
+  drawDome(CTX,W,H);
+}
+requestAnimationFrame(render);
+</script>
+</body>
+</html>
