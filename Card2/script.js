@@ -70,21 +70,7 @@ document.getElementById('card').addEventListener('click', e => {
 // ── PDF EXPORT ──
 document.getElementById('downloadPdf').addEventListener('click', () => {
   const element = document.getElementById('card');
-  const messages = element.querySelectorAll('.message, .quote, .promise, .dev-line, .sig-from, .sig-sub');
-  const titles = element.querySelectorAll('.main-title, .subtitle, .date-eyebrow, .sig-name');
   
-  // Guardar estilos originales para restaurar después
-  element.style.background = '#120d13'; 
-  element.style.backdropFilter = 'none'; // Importante: html2canvas no soporta esto y genera bloques grises
-  
-  messages.forEach(m => {
-    m.style.color = '#f0e8d8'; 
-  });
-  
-  titles.forEach(t => {
-    t.style.textShadow = 'none';
-  });
-
   const opt = {
     margin:       0,
     filename:     'Viernes13_Piojito.pdf',
@@ -94,19 +80,39 @@ document.getElementById('downloadPdf').addEventListener('click', () => {
       useCORS: true,
       backgroundColor: '#0a0608',
       scrollY: 0,
-      windowWidth: 560 // Ancho fijo del card para evitar recortes del viewport
+      windowWidth: 560,
+      onclone: (clonedDoc) => {
+        // En el documento clonado, forzamos que todo sea visible
+        const clonedCard = clonedDoc.getElementById('card');
+        clonedCard.style.opacity = '1';
+        clonedCard.style.transform = 'none';
+        clonedCard.style.animation = 'none';
+        clonedCard.style.backdropFilter = 'none';
+        clonedCard.style.background = '#120d13';
+
+        // Forzamos visibilidad de todos los hijos que tienen animaciones fadeUp
+        const children = clonedCard.querySelectorAll('*');
+        children.forEach(child => {
+          child.style.opacity = '1';
+          child.style.transform = 'none';
+          child.style.animation = 'none';
+          child.style.transition = 'none';
+          
+          // Aseguramos que el texto sea color crema sólido
+          if (child.classList.contains('message') || 
+              child.classList.contains('quote')   || 
+              child.classList.contains('promise') || 
+              child.classList.contains('sig-from')) {
+            child.style.color = '#f0e8d8';
+          }
+        });
+      }
     },
     jsPDF:        { unit: 'pt', format: 'letter', orientation: 'portrait' },
     pagebreak:    { mode: 'avoid-all' }
   };
 
-  html2pdf().set(opt).from(element).toPdf().get('pdf').then(() => {
-    // Restaurar estilos originales
-    element.style.background = '';
-    element.style.backdropFilter = '';
-    messages.forEach(m => { m.style.color = ''; });
-    titles.forEach(t => { t.style.textShadow = ''; });
-  }).save();
+  html2pdf().set(opt).from(element).save();
 });
 
 // inject keyframe (already handled in CSS, but keeping JS logic if needed for dynamic injection)
