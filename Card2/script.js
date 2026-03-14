@@ -67,54 +67,6 @@ document.getElementById('card').addEventListener('click', e => {
   }
 });
 
-// ── PDF EXPORT ──
-document.getElementById('downloadPdf').addEventListener('click', () => {
-  const element = document.getElementById('card');
-  
-  const opt = {
-    margin:       0,
-    filename:     'Viernes13_Piojito.pdf',
-    image:        { type: 'jpeg', quality: 0.98 },
-    html2canvas:  { 
-      scale: 3, 
-      useCORS: true,
-      backgroundColor: '#0a0608',
-      scrollY: 0,
-      windowWidth: 560,
-      onclone: (clonedDoc) => {
-        // En el documento clonado, forzamos que todo sea visible
-        const clonedCard = clonedDoc.getElementById('card');
-        clonedCard.style.opacity = '1';
-        clonedCard.style.transform = 'none';
-        clonedCard.style.animation = 'none';
-        clonedCard.style.backdropFilter = 'none';
-        clonedCard.style.background = '#120d13';
-
-        // Forzamos visibilidad de todos los hijos que tienen animaciones fadeUp
-        const children = clonedCard.querySelectorAll('*');
-        children.forEach(child => {
-          child.style.opacity = '1';
-          child.style.transform = 'none';
-          child.style.animation = 'none';
-          child.style.transition = 'none';
-          
-          // Aseguramos que el texto sea color crema sólido
-          if (child.classList.contains('message') || 
-              child.classList.contains('quote')   || 
-              child.classList.contains('promise') || 
-              child.classList.contains('sig-from')) {
-            child.style.color = '#f0e8d8';
-          }
-        });
-      }
-    },
-    jsPDF:        { unit: 'pt', format: 'letter', orientation: 'portrait' },
-    pagebreak:    { mode: 'avoid-all' }
-  };
-
-  html2pdf().set(opt).from(element).save();
-});
-
 // inject keyframe (already handled in CSS, but keeping JS logic if needed for dynamic injection)
 // const st = document.createElement('style');
 // st.textContent=`@keyframes sparkBurst{0%{opacity:1;transform:scale(0.2) translateY(0)}100%{opacity:0;transform:scale(2) translateY(-50px)}}`;
