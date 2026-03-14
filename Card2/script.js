@@ -70,6 +70,21 @@ document.getElementById('card').addEventListener('click', e => {
 // ── PDF EXPORT ──
 document.getElementById('downloadPdf').addEventListener('click', () => {
   const element = document.getElementById('card');
+  const messages = element.querySelectorAll('.message, .quote, .promise, .dev-line, .sig-from, .sig-sub');
+  const titles = element.querySelectorAll('.main-title, .subtitle, .date-eyebrow, .sig-name');
+  
+  // Guardar estilos originales para restaurar después
+  element.style.background = '#120d13'; 
+  element.style.backdropFilter = 'none'; // Importante: html2canvas no soporta esto y genera bloques grises
+  
+  messages.forEach(m => {
+    m.style.color = '#f0e8d8'; 
+  });
+  
+  titles.forEach(t => {
+    t.style.textShadow = 'none';
+  });
+
   const opt = {
     margin:       0,
     filename:     'Viernes13_Piojito.pdf',
@@ -79,13 +94,19 @@ document.getElementById('downloadPdf').addEventListener('click', () => {
       useCORS: true,
       backgroundColor: '#0a0608',
       scrollY: 0,
-      windowWidth: document.documentElement.offsetWidth
+      windowWidth: 560 // Ancho fijo del card para evitar recortes del viewport
     },
     jsPDF:        { unit: 'pt', format: 'letter', orientation: 'portrait' },
     pagebreak:    { mode: 'avoid-all' }
   };
 
-  html2pdf().set(opt).from(element).save();
+  html2pdf().set(opt).from(element).toPdf().get('pdf').then(() => {
+    // Restaurar estilos originales
+    element.style.background = '';
+    element.style.backdropFilter = '';
+    messages.forEach(m => { m.style.color = ''; });
+    titles.forEach(t => { t.style.textShadow = ''; });
+  }).save();
 });
 
 // inject keyframe (already handled in CSS, but keeping JS logic if needed for dynamic injection)
