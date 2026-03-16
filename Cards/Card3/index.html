@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Para Piojito · De Kinosaby</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Sacramento&family=Cinzel:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="../" class="btn-back">← Volver</a>
+
+<!-- SVG gerbera defs -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <g id="g-orange">
+      <g fill="#E8721A">
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(0 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(36 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(72 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(108 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(144 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(180 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(216 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(252 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(288 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(324 50 50)"/>
+      </g>
+      <g fill="#C85010" opacity=".8">
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(18 50 50)"/>
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(54 50 50)"/>
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(90 50 50)"/>
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(126 50 50)"/>
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(162 50 50)"/>
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(198 50 50)"/>
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(234 50 50)"/>
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(270 50 50)"/>
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(306 50 50)"/>
+        <ellipse cx="50" cy="27" rx="4" ry="10" transform="rotate(342 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="12" fill="#1e0808"/>
+      <circle cx="50" cy="50" r="8"  fill="#2e1008"/>
+    </g>
+    <g id="g-pink">
+      <g fill="#E84878">
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(0 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(36 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(72 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(108 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(144 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(180 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(216 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(252 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(288 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(324 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="12" fill="#1a0810"/>
+      <circle cx="50" cy="50" r="8"  fill="#2a1018"/>
+    </g>
+    <g id="g-red">
+      <g fill="#C82828">
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(0 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(36 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(72 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(108 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(144 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(180 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(216 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(252 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(288 50 50)"/>
+        <ellipse cx="50" cy="20" rx="6" ry="16" transform="rotate(324 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="12" fill="#1e0808"/>
+      <circle cx="50" cy="50" r="8"  fill="#2e0808"/>
+    </g>
+  </defs>
+</svg>
+
+<canvas id="stars"></canvas>
+
+<!-- floating petals -->
+<div id="floats"></div>
+
+<div class="card-wrapper">
+  <div class="card">
+    <div class="card-top-strip"></div>
+
+    <div class="card-header">
+      <div class="header-tag">✦ Para ti · Siempre ✦</div>
+      <div class="gerbera-row">
+        <svg class="g1" width="48" height="48" viewBox="0 0 100 100"><use href="#g-pink"/></svg>
+        <svg class="g2" width="60" height="60" viewBox="0 0 100 100"><use href="#g-orange"/></svg>
+        <svg class="g3" width="48" height="48" viewBox="0 0 100 100"><use href="#g-red"/></svg>
+      </div>
+      <div class="card-title">Piojito</div>
+    </div>
+
+    <div class="divider">
+      <div class="div-line"></div>
+      <div class="div-icon">🌼</div>
+      <div class="div-line"></div>
+    </div>
+
+    <div class="card-body">
+
+      <div class="paragraph">
+        Sé que te gustan los atardeceres — esos momentos donde el cielo
+        no sabe si quedarse de día o volverse noche, y aun así es
+        <em>la cosa más bonita que existe</em>. Así eres tú para mí.
+        Ese punto exacto donde todo cambia de color y uno no puede
+        dejar de mirar.
+      </div>
+
+      <div class="paragraph">
+        Sé que te gustan los kdramas — esas historias donde el amor
+        tarda, tropieza, se pierde y de alguna manera siempre
+        <em>encuentra el camino de regreso</em>. Me gusta pensar
+        que las mejores historias no son las que terminan rápido,
+        sino las que valen la pena esperar.
+      </div>
+
+      <div class="highlight">
+        Igual que cuando agarras un plumón nuevo y el color sale
+        perfecto — así me siento cuando estoy contigo.
+        Como que todo tiene más vida, más brillo,
+        más <strong>razón de ser</strong>.
+      </div>
+
+      <div class="paragraph">
+        Y como el chocolate — que es amargo y dulce al mismo tiempo,
+        que calienta por dentro aunque afuera haga frío —
+        así es querer algo de verdad. No siempre es fácil.
+        Pero <em>siempre, siempre vale</em>.
+      </div>
+
+      <div class="paragraph">
+        Las gerberas no piden permiso para ser bonitas.
+        Simplemente lo son — con color, con carácter,
+        sin disculparse por existir.<br><br>
+        <strong>Tú tampoco necesitas pedirlo.</strong>
+        Ya lo eres.
+      </div>
+
+      <div class="signature">
+        <div class="sig-label">con todo lo que tengo</div>
+        <div class="sig-name">Kinosaby</div>
+        <div class="sig-bottom">▴ siempre tuyo ▴</div>
+      </div>
+
+      <div class="bottom-icons">
+        <span>🌸</span>
+        <span>🍫</span>
+        <span>🖊️</span>
+        <span>🌅</span>
+        <span>🎬</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

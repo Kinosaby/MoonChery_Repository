@@ -1,0 +1,202 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+body {
+  width:100vw; height:100vh;
+  overflow:hidden;
+  background: linear-gradient(180deg,
+    #1a2a3a 0%, #243444 15%,
+    #2e3d50 30%, #354858 50%,
+    #2a3d30 70%, #1e2e22 100%);
+  font-family:'Cormorant Garamond',serif;
+}
+
+/* ── SCENE ── */
+#scene { position:relative; width:100%; height:100%; }
+
+/* ── SKY MIST ── */
+.mist {
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  animation:mistDrift ease-in-out infinite alternate;
+  filter:blur(60px);
+}
+.m1{width:500px;height:300px;top:0;left:-100px;background:rgba(100,140,180,.08);animation-duration:8s;}
+.m2{width:400px;height:250px;top:0;right:-80px;background:rgba(80,120,160,.07);animation-duration:11s;}
+.m3{width:600px;height:200px;top:30%;left:10%;background:rgba(60,100,80,.06);animation-duration:9s;}
+@keyframes mistDrift{from{opacity:.5;transform:translateX(0);}to{opacity:1;transform:translateX(20px);}}
+
+/* ── RAIN CANVAS ── */
+#rain{position:absolute;inset:0;pointer-events:none;z-index:3;}
+
+/* ── GROUND ── */
+#ground {
+  position:absolute;bottom:0;left:0;right:0;
+  height:30%;
+  background:linear-gradient(180deg,#2a3d28 0%,#1e2e1c 40%,#161e14 100%);
+  border-top:2px solid rgba(80,120,60,.5);
+}
+/* wet ground sheen */
+#ground::after {
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:8px;
+  background:linear-gradient(90deg,
+    transparent,rgba(100,160,200,.15),transparent,rgba(100,160,200,.12),transparent);
+  animation:groundSheen 3s ease-in-out infinite;
+}
+@keyframes groundSheen{0%,100%{opacity:.5;}50%{opacity:1;}}
+
+/* ── PUDDLES ── */
+.puddle {
+  position:absolute;bottom:0;
+  border-radius:50%;
+  background:rgba(100,150,200,.12);
+  border:1px solid rgba(120,180,220,.15);
+  animation:puddleRipple 2s ease-out infinite;
+}
+@keyframes puddleRipple{
+  0%{box-shadow:0 0 0 0 rgba(120,180,220,.2);}
+  100%{box-shadow:0 0 0 20px rgba(120,180,220,0);}
+}
+
+/* ── STEMS ── */
+.stem {
+  position:absolute;
+  bottom:30%;
+  transform-origin:bottom center;
+  z-index:2;
+}
+.stem-body {
+  width:4px;
+  background:linear-gradient(180deg,#5a8a40,#3a5a28);
+  border-radius:2px;
+  margin:0 auto;
+  position:relative;
+}
+/* leaf */
+.leaf {
+  position:absolute;
+  width:18px;height:10px;
+  border-radius:50% 10% 50% 10%;
+  background:linear-gradient(135deg,#5a8a40,#3a6a28);
+}
+.leaf.left{left:-16px;transform:rotate(-30deg);}
+.leaf.right{right:-16px;transform:rotate(30deg) scaleX(-1);}
+
+/* ── FLOWER HEAD ── */
+.flower-head {
+  position:relative;
+  margin:0 auto;
+  transform-origin:bottom center;
+  animation:flowerSway ease-in-out infinite alternate;
+}
+@keyframes flowerSway{
+  from{transform:rotate(-3deg);}
+  to{transform:rotate(3deg);}
+}
+
+/* ── RAIN DROPLET on flower ── */
+.flower-drop {
+  position:absolute;
+  width:3px;height:8px;
+  background:linear-gradient(180deg,rgba(150,200,240,.8),rgba(100,160,220,.4));
+  border-radius:50% 50% 50% 50% / 30% 30% 70% 70%;
+  animation:dropFall ease-in forwards;
+  pointer-events:none;z-index:10;
+}
+@keyframes dropFall{
+  0%{opacity:1;transform:translateY(0);}
+  100%{opacity:0;transform:translateY(30px);}
+}
+
+/* ── MESSAGE ── */
+#message {
+  position:absolute;
+  top:5%;left:50%;transform:translateX(-50%);
+  text-align:center;z-index:10;pointer-events:none;
+  animation:fadeUp .9s .3s both;opacity:0;
+  width:90%;max-width:480px;
+}
+@keyframes fadeUp{from{opacity:0;transform:translate(-50%,14px);}to{opacity:1;transform:translate(-50%,0);}}
+
+.msg-tag {
+  font-family:'Cinzel',serif;
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(160,200,240,.55);margin-bottom:8px;
+}
+.msg-title {
+  font-family:'Sacramento',cursive;
+  font-size:clamp(38px,7vw,64px);line-height:1.1;
+  color:rgba(240,248,255,.9);
+  text-shadow:0 0 30px rgba(100,160,220,.4),0 2px 20px rgba(0,0,0,.4);
+  margin-bottom:6px;
+}
+.msg-sub {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:300;font-size:15px;
+  color:rgba(200,230,255,.55);letter-spacing:.3px;
+}
+
+/* ── BOTTOM QUOTE ── */
+#quote {
+  position:absolute;
+  bottom:calc(30% + 20px);
+  left:50%;transform:translateX(-50%);
+  text-align:center;z-index:10;pointer-events:none;
+  width:90%;max-width:440px;
+  animation:fadeUp .9s .8s both;opacity:0;
+}
+.quote-text {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:300;font-size:15px;line-height:1.75;
+  color:rgba(200,230,255,.6);
+}
+.quote-from {
+  font-family:'Cinzel',serif;
+  font-size:9.5px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(160,200,240,.4);margin-top:8px;
+}
+
+/* ── THUNDER FLASH ── */
+#thunder {
+  position:fixed;inset:0;
+  background:rgba(200,230,255,.04);
+  pointer-events:none;z-index:20;
+  opacity:0;
+}
+
+/* ── LIGHTNING ── */
+#lightning-canvas{position:fixed;inset:0;pointer-events:none;z-index:19;}
+
+/* ── Botón de regreso ── */
+.btn-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  display: inline-block;
+  padding: 10px 22px;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(200, 230, 255, 0.8);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid rgba(160, 200, 240, 0.2);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-back:hover {
+  background: rgba(160, 200, 240, 0.2);
+  transform: translateX(-5px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(160,200,240,0.25);
+  color: white;
+}
+
+@media(max-width:480px){
+  .msg-title{font-size:38px;}
+  .msg-sub,.quote-text{font-size:13px;}
+}
