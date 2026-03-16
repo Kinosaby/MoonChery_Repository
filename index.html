@@ -1,215 +1,294 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <title>Para mi Piojito ✦ v6</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Sacramento&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css?v=6"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Sacramento&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
+
 <body>
-<canvas id="bg-canvas"></canvas>
+  <canvas id="bg-canvas"></canvas>
 
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <g id="g-pink"><g fill="#d45080"><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(0 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(30 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(60 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(90 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(120 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(150 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(180 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(210 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(240 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(270 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(300 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(330 50 50)"/></g><circle cx="50" cy="50" r="13" fill="#1a0810"/><circle cx="50" cy="50" r="9" fill="#2a1018"/></g>
-    <g id="g-red"><g fill="#d4504a"><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(0 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(30 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(60 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(90 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(120 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(150 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(180 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(210 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(240 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(270 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(300 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(330 50 50)"/></g><circle cx="50" cy="50" r="13" fill="#1e0a08"/><circle cx="50" cy="50" r="9" fill="#2e1008"/></g>
-    <g id="g-gold"><g fill="#e8b840"><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(0 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(30 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(60 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(90 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(120 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(150 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(180 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(210 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(240 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(270 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(300 50 50)"/><ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(330 50 50)"/></g><circle cx="50" cy="50" r="13" fill="#1a1008"/><circle cx="50" cy="50" r="9" fill="#2a1c08"/></g>
-  </defs>
-</svg>
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <g id="g-pink">
+        <g fill="#d45080">
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(0 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(30 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(60 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(90 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(120 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(150 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(180 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(210 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(240 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(270 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(300 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(330 50 50)" />
+        </g>
+        <circle cx="50" cy="50" r="13" fill="#1a0810" />
+        <circle cx="50" cy="50" r="9" fill="#2a1018" />
+      </g>
+      <g id="g-red">
+        <g fill="#d4504a">
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(0 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(30 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(60 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(90 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(120 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(150 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(180 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(210 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(240 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(270 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(300 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(330 50 50)" />
+        </g>
+        <circle cx="50" cy="50" r="13" fill="#1e0a08" />
+        <circle cx="50" cy="50" r="9" fill="#2e1008" />
+      </g>
+      <g id="g-gold">
+        <g fill="#e8b840">
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(0 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(30 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(60 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(90 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(120 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(150 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(180 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(210 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(240 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(270 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(300 50 50)" />
+          <ellipse cx="50" cy="18" rx="7" ry="18" transform="rotate(330 50 50)" />
+        </g>
+        <circle cx="50" cy="50" r="13" fill="#1a1008" />
+        <circle cx="50" cy="50" r="9" fill="#2a1c08" />
+      </g>
+    </defs>
+  </svg>
 
-<div class="page">
+  <div class="page">
 
-  <!-- HERO -->
-  <header class="hero">
-    <p class="hero-eyebrow">hecho con todo el corazón ✦</p>
-    <h1 class="hero-title">Proyectos para Ti</h1>
-    <p class="hero-sub">Cada uno pensado en ti, Piojito</p>
-    <div class="hero-flowers">
-      <svg class="hf1" width="50" height="50" viewBox="0 0 100 100"><use href="#g-pink"/></svg>
-      <svg class="hf2" width="64" height="64" viewBox="0 0 100 100"><use href="#g-red"/></svg>
-      <svg class="hf3" width="50" height="50" viewBox="0 0 100 100"><use href="#g-gold"/></svg>
-    </div>
-    <div class="rule">
-      <div class="rule-line"></div>
-      <div class="rule-diamond"></div>
-      <div class="rule-line"></div>
-    </div>
-  </header>
+    <!-- HERO -->
+    <header class="hero">
+      <p class="hero-eyebrow">hecho con todo el corazón ✦</p>
+      <h1 class="hero-title">Proyectos para Ti</h1>
+      <p class="hero-sub">Cada uno pensado en ti, Piojito</p>
+      <div class="hero-flowers">
+        <svg class="hf1" width="50" height="50" viewBox="0 0 100 100">
+          <use href="#g-pink" />
+        </svg>
+        <svg class="hf2" width="64" height="64" viewBox="0 0 100 100">
+          <use href="#g-red" />
+        </svg>
+        <svg class="hf3" width="50" height="50" viewBox="0 0 100 100">
+          <use href="#g-gold" />
+        </svg>
+      </div>
+      <div class="rule">
+        <div class="rule-line"></div>
+        <div class="rule-diamond"></div>
+        <div class="rule-line"></div>
+      </div>
+    </header>
 
-  <!-- ══ 1 · CARTAS ESPECIALES ══ -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-icon">💌</span>
-      <span class="section-title">Cartas Especiales</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="grid-2">
-      <a href="Card/?v=6" class="card card-featured">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-inner">
-          <div class="card-icon-wrap">🌼</div>
-          <div class="card-text">
-            <div class="card-title">Para Piojito</div>
-            <div class="card-desc">Tarjeta del Día Internacional de la Mujer, hecha con gerberas y todo el amor</div>
-            <span class="card-tag">8 de Marzo</span>
+    <!-- ══ 1 · CARTAS ESPECIALES ══ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-icon">💌</span>
+        <span class="section-title">Cartas Especiales</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="grid-2">
+        <a href="Card/?v=6" class="card card-featured">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-inner">
+            <div class="card-icon-wrap">🌼</div>
+            <div class="card-text">
+              <div class="card-title">Para Piojito</div>
+              <div class="card-desc">Tarjeta del Día Internacional de la Mujer, hecha con gerberas y todo el amor</div>
+              <span class="card-tag">8 de Marzo</span>
+            </div>
           </div>
-        </div>
-      </a>
-      <a href="Card2/?v=6" class="card card-featured">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-inner">
-          <div class="card-icon-wrap">🌙</div>
-          <div class="card-text">
-            <div class="card-title">Viernes 13</div>
-            <div class="card-desc">Edición especial oscura y romántica, porque incluso el día de la mala suerte me haces pensar en ti</div>
-            <span class="card-tag">Edición Especial</span>
+        </a>
+        <a href="Card2/?v=6" class="card card-featured">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-inner">
+            <div class="card-icon-wrap">🌙</div>
+            <div class="card-text">
+              <div class="card-title">Viernes 13</div>
+              <div class="card-desc">Edición especial oscura y romántica, porque incluso el día de la mala suerte me
+                haces pensar en ti</div>
+              <span class="card-tag">Edición Especial</span>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-  </section>
+        </a>
+      </div>
+    </section>
 
-  <!-- ══ 2 · JARDINES ══ -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-icon">🌸</span>
-      <span class="section-title">Jardines</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="grid-4">
-      <a href="ramo-gerberas/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">🌸</div>
-        <div class="card-title">Ramo de Gerberas</div>
-        <div class="card-desc">Un bouquet lleno de alegría y color</div>
-      </a>
-      <a href="jardin-gerberas/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">🌺</div>
-        <div class="card-title">Jardín de Gerberas</div>
-        <div class="card-desc">Un jardín lleno de flores para ti</div>
-      </a>
-      <a href="jardin-romantico/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">🌹</div>
-        <div class="card-title">Jardín Romántico</div>
-        <div class="card-desc">Flores y romance en un mismo lugar</div>
-      </a>
-      <a href="rosa_en_domo/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">🌹</div>
-        <div class="card-title">Rosa en Domo</div>
-        <div class="card-desc">Rosa neón en domo de cristal</div>
-      </a>
-    </div>
-  </section>
+    <!-- ══ 2 · JARDINES ══ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-icon">🌸</span>
+        <span class="section-title">Jardines</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="grid-4">
+        <a href="ramo-gerberas/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">🌸</div>
+          <div class="card-title">Ramo de Gerberas</div>
+          <div class="card-desc">Un bouquet lleno de alegría y color</div>
+        </a>
+        <a href="jardin-gerberas/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">🌺</div>
+          <div class="card-title">Jardín de Gerberas</div>
+          <div class="card-desc">Un jardín lleno de flores para ti</div>
+        </a>
+        <a href="jardin-romantico/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">🌹</div>
+          <div class="card-title">Jardín Romántico</div>
+          <div class="card-desc">Flores y romance en un mismo lugar</div>
+        </a>
+        <a href="rosa_en_domo/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">🌹</div>
+          <div class="card-title">Rosa en Domo</div>
+          <div class="card-desc">Rosa neón en domo de cristal</div>
+        </a>
+      </div>
+    </section>
 
-  <!-- ══ 3 · INTERACTIVOS ══ -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-icon">🎮</span>
-      <span class="section-title">Interactivos</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="grid-4">
-      <a href="Galaxia/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">🌌</div>
-        <div class="card-title">Galaxia</div>
-        <div class="card-desc">Encuentra las estrellas con mensajes escondidos</div>
-      </a>
-      <a href="girasol-san-valentin/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">🌻</div>
-        <div class="card-title">¿Mi San Valentín?</div>
-        <div class="card-desc">Girasol kawaii interactivo</div>
-      </a>
-      <a href="girasoles-te-amo/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">💕</div>
-        <div class="card-title">Girasoles Te Amo</div>
-        <div class="card-desc">Jardín de girasoles con corazones</div>
-      </a>
-    </div>
-  </section>
+    <!-- ══ 3 · INTERACTIVOS ══ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-icon">🎮</span>
+        <span class="section-title">Interactivos</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="grid-4">
+        <a href="Galaxia/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">🌌</div>
+          <div class="card-title">Galaxia</div>
+          <div class="card-desc">Encuentra las estrellas con mensajes escondidos</div>
+        </a>
+        <a href="girasol-san-valentin/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">🌻</div>
+          <div class="card-title">¿Mi San Valentín?</div>
+          <div class="card-desc">Girasol kawaii interactivo</div>
+        </a>
+        <a href="girasoles-te-amo/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">💕</div>
+          <div class="card-title">Girasoles Te Amo</div>
+          <div class="card-desc">Jardín de girasoles con corazones</div>
+        </a>
+      </div>
+    </section>
 
-  <!-- ══ 4 · ESPECIALES ══ -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-icon">🎁</span>
-      <span class="section-title">Especiales</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="grid-3">
-      <a href="panda/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">🐼</div>
-        <div class="card-title">Panda</div>
-        <div class="card-desc">Panda adorable hecho para ti</div>
-      </a>
-      <a href="cumpleanos-america/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">🎂</div>
-        <div class="card-title">Cumpleaños America</div>
-        <div class="card-desc">Una celebración especial para ese día tan importante</div>
-      </a>
-      <a href="te-amo/" class="card card-medium">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-icon-wrap">❤️</div>
-        <div class="card-title">Te Amo</div>
-        <div class="card-desc">Un mensaje de amor directo al corazón</div>
-      </a>
-    </div>
-  </section>
+    <!-- ══ 4 · ESPECIALES ══ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-icon">🎁</span>
+        <span class="section-title">Especiales</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="grid-3">
+        <a href="panda/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">🐼</div>
+          <div class="card-title">Panda</div>
+          <div class="card-desc">Panda adorable hecho para ti</div>
+        </a>
+        <a href="cumpleanos-america/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">🎂</div>
+          <div class="card-title">Cumpleaños America</div>
+          <div class="card-desc">Una celebración especial para ese día tan importante</div>
+        </a>
+        <a href="te-amo/" class="card card-medium">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">❤️</div>
+          <div class="card-title">Te Amo</div>
+          <div class="card-desc">Un mensaje de amor directo al corazón</div>
+        </a>
+      </div>
+    </section>
 
-  <!-- ══ 5 · HISTORIAS ══ -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-icon">📖</span>
-      <span class="section-title">Historias</span>
-      <div class="section-line"></div>
-    </div>
-    <div class="grid-2">
-      <a href="Historias/El%20Ultimo%20Tren/" class="card card-story">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-inner">
-          <div class="card-icon-wrap">🚂</div>
-          <div class="card-text">
-            <div class="card-title">El Último Tren</div>
-            <div class="card-desc">Cinco personas en una estación. Cinco historias que se cruzan cuando más lo necesitan.</div>
-            <span class="card-tag">Historia · 7 capítulos</span>
+    <!-- ══ 5 · HISTORIAS ══ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-icon">📖</span>
+        <span class="section-title">Historias</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="grid-2">
+        <a href="Historias/El%20Ultimo%20Tren/" class="card card-story">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-inner">
+            <div class="card-icon-wrap">🚂</div>
+            <div class="card-text">
+              <div class="card-title">El Último Tren</div>
+              <div class="card-desc">Cinco personas en una estación. Cinco historias que se cruzan cuando más lo
+                necesitan.</div>
+              <span class="card-tag">Historia · 7 capítulos</span>
+            </div>
           </div>
-        </div>
-      </a>
-      <a href="Historias/El%20Cartografo/" class="card card-story">
-        <div class="card-arrow">↗</div><div class="card-glow"></div>
-        <div class="card-inner">
-          <div class="card-icon-wrap">🗺️</div>
-          <div class="card-text">
-            <div class="card-title">El Cartógrafo del Olvido</div>
-            <div class="card-desc">Un hombre que restaura mapas de lugares que ya no existen aprende a dejar espacio para lo que llega.</div>
-            <span class="card-tag">Historia · 7 capítulos</span>
+        </a>
+        <a href="Historias/El%20Cartografo/" class="card card-story">
+          <div class="card-arrow">↗</div>
+          <div class="card-glow"></div>
+          <div class="card-inner">
+            <div class="card-icon-wrap">🗺️</div>
+            <div class="card-text">
+              <div class="card-title">El Cartógrafo del Olvido</div>
+              <div class="card-desc">Un hombre que restaura mapas de lugares que ya no existen aprende a dejar espacio
+                para lo que llega.</div>
+              <span class="card-tag">Historia · 7 capítulos</span>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-  </section>
+        </a>
+      </div>
+    </section>
 
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-rule">
-      <div class="footer-rule-line"></div>
-      <span class="footer-heart">♥</span>
-      <div class="footer-rule-line"></div>
-    </div>
-    <p class="footer-text">Lady_Repo ✨ v6 · hecho con amor · Kinosaby</p>
-  </footer>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-rule">
+        <div class="footer-rule-line"></div>
+        <span class="footer-heart">♥</span>
+        <div class="footer-rule-line"></div>
+      </div>
+      <p class="footer-text">Lady_Repo ✨ v6 · hecho con amor · Kinosaby</p>
+    </footer>
 
-</div>
+  </div>
 
-<script src="script.js?v=6"></script>
+  <script src="script.js?v=6"></script>
 </body>
+
 </html>
