@@ -104,36 +104,3 @@ body{
   .page{padding:52px 16px 60px;}
   .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
 }
-
-.section-icon-img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(200, 144, 58, 0.3));
-  margin-right: 12px;
-}
-
-.card-icon-img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 5px rgba(196, 48, 96, 0.2));
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.card:hover .card-icon-img {
-  transform: scale(1.1) rotate(5deg);
-  filter: drop-shadow(0 0 10px rgba(200, 144, 58, 0.5));
-}
-
-.card-story .card-icon-img {
-  width: 48px;
-  height: 48px;
-}
-
-.footer-icon-img {
-  width: 18px;
-  height: 18px;
-  vertical-align: middle;
-  margin: 0 4px;
-}
