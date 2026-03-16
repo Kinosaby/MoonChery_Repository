@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Último Tren · Una Historia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <canvas id="bg-canvas"></canvas>
+  <div id="progress"></div>
+
+  <!-- Botón de regreso -->
+  <a href="../?v=4" class="btn-back">← Volver</a>
+
+  <!-- ── NAV DOTS ── -->
+  <div id="nav">
+    <div class="nav-dot active" data-ch="0" title="Portada"></div>
+    <div class="nav-dot" data-ch="1" title="I"></div>
+    <div class="nav-dot" data-ch="2" title="II"></div>
+    <div class="nav-dot" data-ch="3" title="III"></div>
+    <div class="nav-dot" data-ch="4" title="IV"></div>
+    <div class="nav-dot" data-ch="5" title="V"></div>
+    <div class="nav-dot" data-ch="6" title="VI"></div>
+    <div class="nav-dot" data-ch="7" title="Fin"></div>
+  </div>
+
+  <!-- ══ COVER ══ -->
+  <div id="cover">
+    <div class="cover-eyebrow">Una historia · En siete capítulos</div>
+    <h1 class="cover-title">El Último Tren</h1>
+    <p class="cover-subtitle">Una historia sobre lo que se queda y lo que se va</p>
+    <div class="cover-line">
+      <div class="cover-line-l"></div>
+      <div class="cover-diamond"></div>
+      <div class="cover-line-l"></div>
+    </div>
+    <div class="cover-characters">
+      <div class="char-pill">
+        <div class="char-avatar" style="border-color:rgba(100,160,220,.4);">🧔</div>
+        <div class="char-pill-name">Elías</div>
+      </div>
+      <div class="char-pill">
+        <div class="char-avatar" style="border-color:rgba(220,140,100,.4);">👩</div>
+        <div class="char-pill-name">Sofía</div>
+      </div>
+      <div class="char-pill">
+        <div class="char-avatar" style="border-color:rgba(160,200,120,.4);">👴</div>
+        <div class="char-pill-name">Don Aurelio</div>
+      </div>
+      <div class="char-pill">
+        <div class="char-avatar" style="border-color:rgba(200,120,160,.4);">👧</div>
+        <div class="char-pill-name">Lucía</div>
+      </div>
+      <div class="char-pill">
+        <div class="char-avatar" style="border-color:rgba(180,140,80,.4);">👨</div>
+        <div class="char-pill-name">Tomás</div>
+      </div>
+    </div>
+    <button class="cover-btn" id="start-btn">Comenzar la historia →</button>
+  </div>
+
+  <!-- ══ STORY ══ -->
+  <div class="story">
+
+    <!-- CHAPTER 1 -->
+    <section class="chapter ch-1" id="ch-1">
+      <div class="chapter-inner">
+        <div class="ch-num reveal">Capítulo I</div>
+        <h2 class="ch-title reveal">La estación de las 6:42</h2>
+        <div class="ch-text reveal">
+          <p class="atmosphere">Era noviembre. El tipo de noviembre que huele a despedida.</p>
+          <p>La estación Constitución tenía ese ruido de siempre — zapatos sobre mármol, voces que se cruzan sin tocarse, el anuncio metálico que nadie escucha del todo. <em>Elías</em> llevaba cuarenta minutos sentado en el mismo banco, con el boleto doblado en cuatro en el bolsillo del saco. No lo había sacado desde que lo compró.</p>
+          <p>Tenía treinta y cuatro años y la cara de alguien que lleva mucho tiempo cargando algo sin decírselo a nadie.</p>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <p>Dos bancos más allá, <em>Sofía</em> revisaba su teléfono por décima vez en diez minutos. No porque esperara un mensaje — lo sabía. Solo que el teléfono era algo a donde mirar cuando no querías mirar a ningún lado.</p>
+          <p>Sofía tenía veintinueve años, una maleta mediana con ruedas que chirriaban, y la costumbre de morderse el labio cuando pensaba demasiado.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#8090d0"></span>Elías</div>
+            ¿Sabes si el tren de las 6:42 llega tarde siempre, o solo hoy?
+          </div>
+          <p>Sofía levantó la vista. Lo miró exactamente dos segundos antes de responder.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#d09080"></span>Sofía</div>
+            Siempre. Pero hoy especialmente.
+          </div>
+          <p>Elías asintió. Ninguno de los dos volvió a hablar por un rato. Pero tampoco dejaron de estar ahí.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 2 -->
+    <section class="chapter ch-2" id="ch-2">
+      <div class="chapter-inner">
+        <div class="ch-num reveal">Capítulo II</div>
+        <h2 class="ch-title reveal">El hombre del periódico</h2>
+        <div class="ch-text reveal">
+          <p><em>Don Aurelio</em> tenía setenta y tres años y leía el periódico aunque ya casi no veía bien. Lo compraba todos los días en el mismo kiosco, lo doblaba de la misma manera, y se sentaba en el mismo lugar de la estación desde hace doce años — desde que su esposa Carmen murió un martes de febrero y él descubrió que la casa sola hacía un ruido que no podía soportar.</p>
+          <p>La estación era ruido de otra clase. El tipo que no te recuerda que estás solo.</p>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <p>Ese día <em>Lucía</em> se sentó a su lado. Tenía dieciséis años, la mochila al frente como escudo, y los ojos hinchados con ese disimulo imposible que tienen los que acaban de llorar.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#80c090"></span>Don Aurelio</div>
+            Los trenes siempre llegan, muchacha. Aunque uno ya no quiera que lleguen.
+          </div>
+          <p>Lucía lo miró sin entender bien. Don Aurelio siguió leyendo su periódico.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c090c0"></span>Lucía</div>
+            ¿Usted siempre dice cosas así de raras?
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#80c090"></span>Don Aurelio</div>
+            Solo cuando alguien las necesita escuchar.
+          </div>
+          <p>Lucía no dijo nada. Pero tampoco se fue.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3 -->
+    <section class="chapter ch-3" id="ch-3">
+      <div class="chapter-inner">
+        <div class="ch-num reveal">Capítulo III</div>
+        <h2 class="ch-title reveal">Lo que Tomás no dijo</h2>
+        <div class="ch-text reveal">
+          <p><em>Tomás</em> llegó a la estación corriendo, con el nudo de la corbata torcido y una caja de cartón bajo el brazo — lo que quedaba de ocho años en la misma empresa. Lo habían despedido a las 5 de la tarde con un sobre y once palabras. Exactamente once. Las había contado en el ascensor.</p>
+          <p>Era el mejor amigo de Elías desde la universidad. Lo vio sentado en el banco y se detuvo.</p>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c0a060"></span>Tomás</div>
+            Me echaron.
+          </div>
+          <p>Elías lo miró. Miró la caja. Volvió a mirarlo.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#8090d0"></span>Elías</div>
+            ¿Cuándo?
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c0a060"></span>Tomás</div>
+            Hace una hora. No sé por qué vine aquí.
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#8090d0"></span>Elías</div>
+            Yo tampoco sé por qué vine aquí.
+          </div>
+          <p>Se sentaron juntos. Tomás puso la caja en el piso. Dentro había una planta pequeña, una foto, y una taza con el logo de un equipo de fútbol que ya no existía.</p>
+          <p class="atmosphere">A veces las personas van a la estación sin saber que lo que buscan no tiene boleto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4 -->
+    <section class="chapter ch-4" id="ch-4">
+      <div class="chapter-inner">
+        <div class="ch-num reveal">Capítulo IV</div>
+        <h2 class="ch-title reveal">Lo que Lucía cargaba</h2>
+        <div class="ch-text reveal">
+          <p>Don Aurelio no preguntó. Solo esperó.</p>
+          <p>Y Lucía, que nunca hablaba con desconocidos, que tenía el teléfono lleno de mensajes sin responder, que esa mañana había decidido algo que ahora no podía decir en voz alta — empezó a hablar.</p>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c090c0"></span>Lucía</div>
+            Mi mamá dice que soy un problema. Mi papá no dice nada porque ya no está. En la escuela tampoco... no importa. Nadie nota cuando no estoy.
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#80c090"></span>Don Aurelio</div>
+            Yo lo noto.
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c090c0"></span>Lucía</div>
+            Usted ni me conoce.
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#80c090"></span>Don Aurelio</div>
+            Llevo doce años viniendo aquí. He visto pasar a miles de personas. <em>Tú eres de las que se notan.</em>
+          </div>
+          <p>Lucía apretó la mochila contra el pecho.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c090c0"></span>Lucía</div>
+            Hoy iba a tomar el tren sin destino. Sin boleto de regreso.
+          </div>
+          <p>Don Aurelio bajó el periódico. Por primera vez en doce años, no lo volvió a levantar.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#80c090"></span>Don Aurelio</div>
+            Mi Carmen también quiso hacerlo una vez. Hace cuarenta años. Yo llegué tarde esa noche. Demasiado tarde para muchas cosas — pero no para eso.
+          </div>
+          <p>Hubo un silencio largo. Del tipo que no incomoda.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#80c090"></span>Don Aurelio</div>
+            ¿Tienes hambre? Hay un café aquí cerca que hace el mejor chocolate caliente que he probado en setenta y tres años. Y he probado mucho chocolate.
+          </div>
+          <p>Lucía casi sonrió. Casi.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c090c0"></span>Lucía</div>
+            ¿Y si después quiero tomar el tren igual?
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#80c090"></span>Don Aurelio</div>
+            Los trenes siempre van a estar aquí. El chocolate, no siempre.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5 -->
+    <section class="chapter ch-5" id="ch-5">
+      <div class="chapter-inner">
+        <div class="ch-num reveal">Capítulo V</div>
+        <h2 class="ch-title reveal">El boleto de Elías</h2>
+        <div class="ch-text reveal">
+          <p>Eran las 8 de la noche cuando Sofía se levantó a comprar agua. Al volver, encontró a Elías con el boleto en la mano — ya sin doblar, ya sin esconder.</p>
+          <p>Era un boleto de ida. Sin vuelta.</p>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#d09080"></span>Sofía</div>
+            ¿A dónde vas?
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#8090d0"></span>Elías</div>
+            A donde mi papá. Está enfermo. No sé si llego a tiempo.
+          </div>
+          <p>Sofía se sentó. Sacó de su bolsa su propio boleto. También era de ida.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#d09080"></span>Sofía</div>
+            El mismo tren. El mismo destino.
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#8090d0"></span>Elías</div>
+            ¿A quién vas a ver tú?
+          </div>
+          <p>Sofía guardó el boleto.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#d09080"></span>Sofía</div>
+            A nadie. Voy a dejar flores en un lugar. Mi hermano murió allá el año pasado y todavía no he podido ir.
+          </div>
+          <p>Elías no dijo lo siento. No dijo nada de lo que normalmente se dice. Solo asintió una vez, despacio, como quien reconoce un peso que también ha cargado.</p>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <p>Tomás estaba callado, mirando la taza en la caja de cartón.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c0a060"></span>Tomás</div>
+            Elías. ¿Te acuerdas cuando teníamos veinte años y dijimos que íbamos a comernos el mundo?
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#8090d0"></span>Elías</div>
+            Sí.
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c0a060"></span>Tomás</div>
+            El mundo nos comió a nosotros.
+          </div>
+          <p class="atmosphere">Pero lo dijo sonriendo. Ese tipo de sonrisa que solo tienen las personas que aún no se rinden del todo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 6 -->
+    <section class="chapter ch-6" id="ch-6">
+      <div class="chapter-inner">
+        <div class="ch-num reveal">Capítulo VI</div>
+        <h2 class="ch-title reveal">Las 9:58</h2>
+        <div class="ch-text reveal">
+          <p>El tren llegó con retraso, como siempre. Tres horas y dieciséis minutos después de que debía haber llegado.</p>
+          <p>En ese tiempo pasaron cosas que no estaban en el itinerario de nadie.</p>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <p>Don Aurelio y Lucía no tomaron el tren. Fueron al café. Lucía tomó chocolate caliente por primera vez en años — su mamá nunca lo preparaba. Don Aurelio habló de Carmen durante una hora. Lucía habló de su papá durante veinte minutos y luego se quedó callada, pero era un silencio diferente al de antes.</p>
+          <p>Antes de irse, Lucía sacó un número de teléfono de su mochila — el de una línea de crisis que alguien le había dado una vez y que nunca había marcado. Se lo mostró a Don Aurelio.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c090c0"></span>Lucía</div>
+            Creo que voy a llamar cuando llegue a mi casa.
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#80c090"></span>Don Aurelio</div>
+            Bien. Y mañana, si quieres, aquí estaré. Mismo banco.
+          </div>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <p>Tomás ayudó a Elías a subir la maleta al tren. En el andén, con el ruido del motor y el olor a metal caliente, se abrazaron como no lo hacían desde que eran jóvenes.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#8090d0"></span>Elías</div>
+            Llámame mañana. No importa la hora.
+          </div>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#c0a060"></span>Tomás</div>
+            Cuídate, Elías.
+          </div>
+          <p>Tomás se quedó en el andén viendo el tren alejarse, con la caja de cartón en los brazos. Pero ya no se veía como alguien cargando una derrota. Se veía como alguien que acababa de recordar algo importante.</p>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <p>En el vagón, Sofía y Elías viajaron en silencio la mayor parte del trayecto. A las dos horas, cuando el paisaje se volvió campo oscuro y el tren aminoró la velocidad, ella dijo algo.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#d09080"></span>Sofía</div>
+            Espero que llegues a tiempo.
+          </div>
+          <p>Elías miró por la ventana.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#8090d0"></span>Elías</div>
+            Yo también.
+          </div>
+          <p class="atmosphere">No llegó a tiempo.</p>
+          <p>Su padre murió a las 11:34 de esa noche, cuarenta minutos antes de que el tren tocara el andén. La enfermera le dijo que había preguntado por él hasta el final. Que había dicho su nombre tres veces.</p>
+          <p>Elías se quedó sentado en la sala del hospital durante horas. Sofía, que no tenía ninguna razón para quedarse, se quedó.</p>
+          <p>No dijo nada. Solo estuvo ahí.</p>
+          <p>A veces eso es todo lo que se puede dar. Y a veces es suficiente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EPILOGUE -->
+    <section class="chapter ch-epilogue" id="ch-epilogue">
+      <div class="chapter-inner">
+        <div class="ch-num reveal">Epílogo</div>
+        <h2 class="ch-title reveal">Lo que dejó la estación</h2>
+        <div class="ch-text reveal">
+          <p>Don Aurelio siguió yendo a la estación todos los días. Pero a veces, cuando llegaba al banco, había una taza de chocolate esperándolo. Nunca supo quién la dejaba. Aunque tenía una sospecha.</p>
+          <p>Lucía llamó esa noche. Y la siguiente. Con el tiempo aprendió que el peso no desaparece, pero que se puede cargar diferente cuando alguien te enseña cómo.</p>
+          <p>Tomás no volvió al mismo tipo de trabajo. Abrió algo pequeño con los ahorros que tenía. Frágil, incierto, completamente suyo. La planta de la caja de cartón vivía en la ventana de ese lugar.</p>
+          <p>Sofía dejó las flores. Lloró por primera vez desde que su hermano murió. Y descubrió que llorar no te vacía — te hace espacio para algo más.</p>
+          <div class="scene-div"><div class="scene-div-line"></div><div class="scene-div-icon">✦</div><div class="scene-div-line"></div></div>
+          <p>Elías regresó a la ciudad tres semanas después. Pasó por la estación sin razón particular. Se sentó en el mismo banco.</p>
+          <p>A los veinte minutos llegó Sofía, con una maleta mediana de ruedas que chirriaban.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#d09080"></span>Sofía</div>
+            ¿Sabes si el tren de las 6:42 llega tarde siempre, o solo hoy?
+          </div>
+          <p>Elías la miró. Sonrió por primera vez en semanas.</p>
+          <div class="dialogue">
+            <div class="speaker"><span class="speaker-dot" style="background:#8090d0"></span>Elías</div>
+            Siempre. Pero hoy especialmente.
+          </div>
+          <p class="atmosphere">Algunos finales no son el final de la historia.<br>Solo el final del capítulo más difícil.</p>
+        </div>
+
+        <div class="end-card reveal">
+          <div class="end-title">Fin</div>
+          <div class="end-text">
+            Esta historia es ficticia.<br>
+            Pero el peso que cargan sus personajes, no lo es.<br><br>
+            Si conoces a alguien que carga algo muy pesado solo,<br>
+            a veces lo único que necesita es que te quedes.<br>
+            Sin decir nada. Solo estar ahí.
+          </div>
+          <button class="end-restart" onclick="window.scrollTo({top:0,behavior:'smooth'});document.getElementById('cover').classList.remove('hide');">
+            Leer de nuevo ↑
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /story -->
+
+  <script src="script.js"></script>
+</body>
+</html>
