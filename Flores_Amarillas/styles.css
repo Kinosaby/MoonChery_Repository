@@ -1,0 +1,248 @@
+:root{
+  --gold:    #f0b020;
+  --gold-l:  #ffd040;
+  --gold-d:  #c08010;
+  --amber:   #e07010;
+  --cream:   #fff8e0;
+  --sky-top: #0a0a1a;
+  --sky-mid: #1a1008;
+  --sky-low: #2a1a04;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--sky-top);
+  overflow-x:hidden;
+  overflow-y:auto;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  cursor:none;
+}
+
+/* cursor personalizado */
+.cursor{
+  position:fixed;width:24px;height:24px;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform .1s;
+  font-size:22px;
+}
+
+/* ── CANVAS PRINCIPAL ── */
+#main-canvas{
+  position:fixed;inset:0;
+  width:100%;height:100%;
+  z-index:0;
+}
+
+/* grain */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:98;
+  opacity:.25;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* ── UI OVERLAY ── */
+#ui{
+  position:relative;z-index:10;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 24px 60px;
+  pointer-events:none;
+}
+
+/* ── FECHA BADGE ── */
+.date-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(240,176,32,.3);
+  border-radius:50px;padding:8px 20px;
+  background:rgba(240,176,32,.06);
+  margin-bottom:28px;
+  animation:fadeDown .9s .2s both;
+}
+.date-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold-l);animation:pulse 1.5s ease-in-out infinite;}
+.date-badge-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(255,216,64,.7);
+}
+@keyframes pulse{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.3);}}
+
+/* ── TÍTULO PRINCIPAL ── */
+.hero{text-align:center;margin-bottom:40px;}
+
+.hero-eyebrow{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;letter-spacing:5px;text-transform:uppercase;
+  color:rgba(240,176,32,.55);margin-bottom:14px;
+  animation:fadeDown .9s .3s both;
+}
+
+.hero-title{
+  font-family:'Sacramento',cursive;
+  font-size:clamp(54px,12vw,110px);
+  line-height:.95;
+  color:var(--cream);
+  text-shadow:
+    0 0 40px rgba(240,176,32,.5),
+    0 0 80px rgba(240,176,32,.2),
+    0 0 120px rgba(240,176,32,.1);
+  animation:fadeDown .9s .4s both;
+  margin-bottom:10px;
+}
+
+.hero-sub{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:clamp(16px,3vw,24px);
+  color:rgba(255,248,224,.5);
+  animation:fadeDown .9s .5s both;
+  margin-bottom:32px;
+}
+
+/* ── FLORES SVG DECORATIVAS ── */
+.hero-flowers{
+  display:flex;justify-content:center;align-items:flex-end;gap:16px;
+  margin-bottom:36px;
+  animation:fadeDown .9s .6s both;
+}
+.hf{animation:floatF 3.5s ease-in-out infinite;}
+.hf:nth-child(1){animation-delay:0s;}
+.hf:nth-child(2){animation-delay:.6s;transform-origin:bottom center;}
+.hf:nth-child(3){animation-delay:1.2s;}
+@keyframes floatF{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-12px) rotate(3deg);}}
+
+/* ── DIVIDER ── */
+.divider{
+  display:flex;align-items:center;gap:16px;
+  max-width:360px;margin:0 auto 36px;
+  animation:fadeDown .9s .65s both;
+}
+.div-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(240,176,32,.3),transparent);}
+.div-sun{font-size:18px;animation:spinSlow 12s linear infinite;}
+@keyframes spinSlow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+/* ── CARTA ── */
+.card{
+  max-width:520px;width:100%;
+  background:rgba(255,248,224,.04);
+  border:1px solid rgba(240,176,32,.18);
+  border-radius:20px;
+  padding:36px 32px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 60px rgba(240,176,32,.06),0 20px 60px rgba(0,0,0,.4);
+  margin-bottom:32px;
+  animation:fadeUp .9s .7s both;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:70%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(240,176,32,.4),transparent);
+}
+.card-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(240,176,32,.5);margin-bottom:18px;
+}
+.card-text{
+  font-size:17px;line-height:2;
+  color:rgba(255,248,224,.75);font-weight:300;
+}
+.card-text p{margin-bottom:14px;}
+.card-text p:last-child{margin-bottom:0;}
+.card-text em{color:var(--cream);font-weight:400;}
+
+.card-sig{
+  text-align:right;margin-top:20px;
+  font-family:'Sacramento',cursive;font-size:32px;
+  color:rgba(240,176,32,.7);
+}
+
+/* ── CONTADOR ── */
+.countdown{
+  text-align:center;margin-bottom:32px;
+  animation:fadeUp .9s .8s both;
+}
+.cd-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(240,176,32,.4);margin-bottom:12px;
+}
+.cd-num{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(48px,10vw,80px);
+  color:var(--gold-l);
+  text-shadow:0 0 30px rgba(240,176,32,.5);
+  line-height:1;
+}
+.cd-unit{
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(240,176,32,.4);margin-top:6px;
+}
+
+/* ── HINT ── */
+.hint{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:14px;
+  color:rgba(255,248,224,.28);
+  text-align:center;
+  animation:blink 3s ease-in-out infinite,fadeUp .9s .9s both;
+  letter-spacing:1px;
+}
+@keyframes blink{0%,100%{opacity:.28;}50%{opacity:.55;}}
+
+/* ── FIRMA ── */
+.sig-footer{
+  text-align:center;margin-top:32px;
+  animation:fadeUp .9s 1s both;
+}
+.sig-footer-rule{display:flex;align-items:center;gap:12px;max-width:200px;margin:0 auto 12px;}
+.sig-footer-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(240,176,32,.25),transparent);}
+.sig-footer-heart{color:var(--gold-l);font-size:14px;animation:hb 1.8s ease-in-out infinite;}
+@keyframes hb{0%,100%{transform:scale(1);}50%{transform:scale(1.3);}}
+.sig-footer-text{
+  font-family:'Sacramento',cursive;font-size:26px;
+  color:rgba(240,176,32,.35);
+}
+
+/* ── BOTÓN VOLVER ── */
+.btn-volver {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10000;
+  background: rgba(255, 248, 224, 0.05);
+  border: 1px solid rgba(240, 176, 32, 0.2);
+  color: var(--gold-l);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+
+.btn-volver:hover {
+  background: rgba(240, 176, 32, 0.1);
+  border-color: var(--gold-l);
+  box-shadow: 0 0 15px rgba(240, 176, 32, 0.3);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:480px){
+  .card{padding:26px 20px;}
+  .card-text{font-size:16px;}
+  #ui{padding:32px 16px 50px;}
+}
