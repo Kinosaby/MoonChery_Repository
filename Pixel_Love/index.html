@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pixel Love · Para Ti 🎮</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Sacramento&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <canvas id="cursor" width="16" height="16"></canvas>
+  <a href="../index.html" class="btn-volver">Volver al Portal</a>
+
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <div class="header">
+      <span class="press-start">▶ PRESS START ◀</span>
+      <span class="title-pixel">Pixel Love</span>
+      <div class="sub-pixel">para ti · Piojito · 1UP</div>
+    </div>
+
+    <!-- ESCENA PIXEL ART -->
+    <canvas id="scene" height="240"></canvas>
+
+    <!-- CARTA PIXEL -->
+    <div class="pixel-box">
+      <div class="carta-pixel">
+        <span class="dear">DEAR PIOJITO,</span>
+        <p>Si nuestra historia fuera un videojuego, tú serías el nivel que uno quiere jugar una y otra vez.</p>
+        <p>No el más fácil. El más bonito. El que tiene la mejor música y los mejores detalles escondidos en las esquinas.</p>
+        <p>Cada vez que pienso en ti es como un checkpoint guardado — siempre puedo volver ahí.</p>
+        <span class="sig">— KINOSABY ♥</span>
+      </div>
+    </div>
+
+    <!-- CORAZONES INTERACTIVOS -->
+    <div class="pixel-box gold">
+      <div class="collect-label">♥ COLECCIONA LOS CORAZONES ♥</div>
+      <div class="hearts-row" id="hearts-row"></div>
+    </div>
+
+    <!-- PROGRESO -->
+    <div style="width:100%">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress" style="width:0%"></div>
+      </div>
+      <div class="progress-label" id="progress-label">CORAZONES: 0 / 8</div>
+    </div>
+
+    <!-- MENSAJES COLECCIONABLES -->
+    <div class="collect-area">
+      <div class="collect-label">★ MENSAJES SECRETOS ★</div>
+      <div class="collect-grid" id="collect-grid"></div>
+    </div>
+
+    <!-- FIRMA -->
+    <div class="footer">
+      <div class="footer-sig">Kinosaby</div>
+    </div>
+
+  </div>
+
+  <!-- POPUP -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup">
+      <span class="popup-emoji" id="popup-emoji"></span>
+      <div class="popup-title" id="popup-title"></div>
+      <div class="popup-msg" id="popup-msg"></div>
+      <button class="popup-close" id="popup-close">[ CONTINUAR ]</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
