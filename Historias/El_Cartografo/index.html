@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>El Cartógrafo del Olvido · Kinosaby</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=Satisfy&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<a href="../../index.html" style="position:fixed; top:20px; left:20px; z-index:100; color:var(--muted); text-decoration:none; font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px; background:rgba(255,255,255,.05); padding:8px 15px; border-radius:50px; border:1px solid rgba(255,255,255,.1); backdrop-filter:blur(5px); transition:all .3s;">← Volver</a>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress"></div>
+
+<div id="nav">
+  <div class="nav-dot active" data-i="0"></div>
+  <div class="nav-dot" data-i="1"></div>
+  <div class="nav-dot" data-i="2"></div>
+  <div class="nav-dot" data-i="3"></div>
+  <div class="nav-dot" data-i="4"></div>
+  <div class="nav-dot" data-i="5"></div>
+  <div class="nav-dot" data-i="6"></div>
+  <div class="nav-dot" data-i="7"></div>
+</div>
+
+<!-- ══ COVER ══ -->
+<div id="cover">
+  <div class="cover-label">Una historia · Por Kinosaby</div>
+  <div class="cover-title">El Cartógrafo<br>del Olvido</div>
+  <div class="cover-title-sub">sobre los que se quedan y los que se borran</div>
+  <div class="cover-rule">
+    <div class="cover-rule-line"></div>
+    <div class="cover-rule-dot"></div>
+    <div class="cover-rule-line"></div>
+  </div>
+  <div class="cover-chars">
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(74,152,136,.4);">🗺️</div>
+      <div class="cc-name">Andrés</div>
+    </div>
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(200,140,100,.4);">👩‍🦱</div>
+      <div class="cc-name">Renata</div>
+    </div>
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(160,180,140,.4);">👴</div>
+      <div class="cc-name">El Profesor</div>
+    </div>
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(180,120,160,.4);">🧒</div>
+      <div class="cc-name">Mateo</div>
+    </div>
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(140,100,180,.4);">👩‍🦳</div>
+      <div class="cc-name">La Señora Iris</div>
+    </div>
+  </div>
+  <button class="cover-start" id="start-btn">Abrir el mapa →</button>
+</div>
+
+<!-- ══ STORY ══ -->
+<div class="story">
+
+  <!-- CH 1 -->
+  <section class="chapter ch-1" id="ch-1">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo I</div>
+      <h2 class="ch-title reveal d1">El hombre que dibujaba lugares que ya no existen</h2>
+      <div class="ch-text reveal d2">
+        <p class="atm">Hay personas que recuerdan todo. Andrés era de las que recuerdan demasiado.</p>
+        <p><em>Andrés</em> tenía treinta y un años y trabajaba en una librería de mapas antiguos en el centro de la ciudad. No los vendía — los restauraba. Pasaba horas con pinceles del grosor de un cabello, devolviéndole el color a ríos que ya no existían, a ciudades que se llamaban diferente, a fronteras que alguien trazó con la certeza de quien no sabe que todo cambia.</p>
+        <p>Tenía la costumbre de guardar cosas en cajones. Cartas que nunca envió. Fotografías de lugares a donde nunca fue. Y una lista, escrita con tinta azul en papel cuadriculado, que decía en la parte de arriba: <strong>"Cosas que no debo olvidar."</strong></p>
+        <p>La lista tenía un solo nombre.</p>
+        <div class="map-block">
+          <span class="map-icon">🗺️</span>
+          Coordenadas sin destino · Mapa sin leyenda
+        </div>
+        <p>El problema de Andrés no era que no pudiera olvidar. Era que no quería. Y esa diferencia, tan pequeña en apariencia, lo estaba consumiendo desde adentro como el agua consume la piedra — despacio, sin ruido, sin que nadie lo note hasta que ya es demasiado tarde.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 2 -->
+  <section class="chapter ch-2" id="ch-2">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo II</div>
+      <h2 class="ch-title reveal d1">Renata y los mapas que no se dibujan</h2>
+      <div class="ch-text reveal d2">
+        <p><em>Renata</em> entró a la librería un martes sin razón aparente. Llevaba un abrigo demasiado grande y el gesto de alguien que lleva semanas tomando decisiones que no quería tomar.</p>
+        <p>Había dejado su trabajo, su departamento y — aunque no se lo decía así — a la versión de sí misma que existía cuando tenía veintisiete años y creía que todo iba a salir bien.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#d09878"></span>Renata</div>
+          ¿Tienen mapas de lugares que ya no existen?
+        </div>
+        <p>Andrés la miró desde detrás del mostrador.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          Eso es básicamente todo lo que tenemos.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#d09878"></span>Renata</div>
+          ¿Cuánto cuesta?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          No está a la venta. Ese lo estoy restaurando.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#d09878"></span>Renata</div>
+          ¿Para qué restaurar algo que ya no existe?
+        </div>
+        <p>Andrés tardó un momento en responder.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          Para que no se olvide que existió.
+        </div>
+        <p>Renata no dijo nada. Pero volvió al día siguiente. Y al otro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 3 -->
+  <section class="chapter ch-3" id="ch-3">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo III</div>
+      <h2 class="ch-title reveal d1">El Profesor Villegas y la memoria que se borra sola</h2>
+      <div class="ch-text reveal d2">
+        <p class="atm">Algunas pérdidas llegan de golpe. Otras llegan despacio, y eso es peor.</p>
+        <p><em>El Profesor Villegas</em> había sido el maestro de historia de Andrés hace veinte años. Era el tipo de profesor que uno no olvida — el que hace que los muertos del pasado parezcan personas reales, el que dibuja en el pizarrón con una precisión de arqueólogo.</p>
+        <p>Ahora tenía setenta y ocho años y un diagnóstico que nadie quería decir en voz alta. Venía a la librería todos los jueves porque era lo último que recordaba con claridad: el olor a papel viejo, la luz que entraba por las ventanas de la esquina, la voz de Andrés explicando algo sobre cartografía del siglo XIX.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#a0c088"></span>El Profesor</div>
+          Andrés. ¿Sabes cuál es el mapa más honesto que existe?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          ¿Cuál, Profesor?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#a0c088"></span>El Profesor</div>
+          El que muestra las zonas inexploradas. Los espacios en blanco. <em>Los que admite que no sabe.</em>
+        </div>
+        <p>Andrés enrolló un mapa con cuidado.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#a0c088"></span>El Profesor</div>
+          Yo tengo cada vez más espacios en blanco, muchacho. Ayer no recordé el nombre de mi hermano. Esta mañana no supe decir en qué ciudad nací.
+        </div>
+        <p>Hubo un silencio entre ellos — del tipo que solo existe entre personas que se quieren y no saben cómo decirlo.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#a0c088"></span>El Profesor</div>
+          Pero me acuerdo de ti. Y me acuerdo de los mapas. Por ahora eso alcanza.
+        </div>
+        <p class="atm">Por ahora eso alcanza.<br>Andrés escribió eso en su lista esa noche.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 4 -->
+  <section class="chapter ch-4" id="ch-4">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo IV</div>
+      <h2 class="ch-title reveal d1">Mateo y el mapa que pedía prestado</h2>
+      <div class="ch-text reveal d2">
+        <p><em>Mateo</em> tenía once años y vivía en el departamento de arriba de la librería con su abuela. Bajaba a veces a "ayudar", que en práctica significaba mover cosas de lugar y hacer preguntas incómodas.</p>
+        <p>Era el tipo de niño que todavía no sabe que hay cosas que no se preguntan. Y eso, sin saberlo, lo hacía el más honesto de todos.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a8d0"></span>Mateo</div>
+          Andrés, ¿tú tienes novia?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          No.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a8d0"></span>Mateo</div>
+          ¿Quieres tener?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          Mateo.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a8d0"></span>Mateo</div>
+          ¿Qué?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          ¿No tienes tarea?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a8d0"></span>Mateo</div>
+          Sí. Por eso bajo aquí. Para no hacerla.
+        </div>
+        <p>Andrés soltó una carcajada — corta, sorprendida. Mateo lo miró satisfecho.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a8d0"></span>Mateo</div>
+          Llevas como mil años sin reírte así. La señora que viene los martes te hace reír más.
+        </div>
+        <p>Andrés volvió a sus mapas sin responder. Pero ya no pudo concentrarse el resto del día.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 5 -->
+  <section class="chapter ch-5" id="ch-5">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo V</div>
+      <h2 class="ch-title reveal d1">La Señora Iris y lo que se guarda en los cajones</h2>
+      <div class="ch-text reveal d2">
+        <p class="atm">Todo el mundo guarda cosas que no debería guardar.</p>
+        <p><em>La Señora Iris</em> tenía sesenta y cuatro años, era la dueña del café de la esquina y sabía más de los vecinos que ningún periódico local. No por chismosa — por atenta. Hay una diferencia enorme entre las dos cosas, aunque mucha gente no la note.</p>
+        <p>Conocía a Andrés desde que llegó al barrio, ocho años atrás, con tres cajas de libros y una expresión de alguien que acaba de sobrevivir algo.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c8a0b8"></span>La Señora Iris</div>
+          Andrés, ¿cuánto tiempo llevas esperando a alguien que ya se fue?
+        </div>
+        <p>Era una pregunta directa. La señora Iris no tenía tiempo para rodeos — tenía un café que atender.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          No estoy esperando a nadie.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c8a0b8"></span>La Señora Iris</div>
+          Mientes muy mal para ser alguien que trabaja con mapas. Los mapas no mienten.
+        </div>
+        <p>Andrés miró el cajón donde guardaba la lista. La señora Iris siguió.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c8a0b8"></span>La Señora Iris</div>
+          Guardar algo en un cajón no es lo mismo que soltarlo. Solo es esconderlo en un lugar que tú mismo conoces.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          ¿Y si no quiero soltarlo?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c8a0b8"></span>La Señora Iris</div>
+          Entonces al menos ábrelo de vez en cuando. Las cosas guardadas sin aire se pudren.
+        </div>
+        <p>Esa noche Andrés abrió el cajón. Sacó la lista. La leyó entera por primera vez en meses.</p>
+        <p>Andrés escribió eso en su lista esa noche.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 6 -->
+  <section class="chapter ch-6" id="ch-6">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo VI</div>
+      <h2 class="ch-title reveal d1">El mapa que Andrés nunca terminó</h2>
+      <div class="ch-text reveal d2">
+        <p>El Profesor Villegas dejó de venir los jueves en enero. Su nieta llamó para avisar que ya no reconocía el camino a la librería. Que a veces no reconocía su propia cara en el espejo.</p>
+        <p>Andrés pasó una semana sin hablar de más. Restauró mapas en silencio, tomó el café que le dejaba Mateo en el mostrador sin preguntar nada, y una tarde, sin planearlo, sacó papel limpio y empezó a dibujar.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <p>Dibujó la librería. El café de la señora Iris. El departamento de arriba donde vivía Mateo. La ruta que tomaba el Profesor desde su casa. Las calles que Renata caminaba los martes antes de entrar.</p>
+        <p>No era un mapa de ningún lugar real. Era un mapa de las personas que se habían quedado.</p>
+        <p>Renata lo encontró trabajando a las 9 de la noche, cuando ya debería haber cerrado.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#d09878"></span>Renata</div>
+          ¿Qué estás dibujando?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          Un lugar que sí existe.
+        </div>
+        <p>Renata se asomó al papel. Lo miró largo rato. Señaló una esquina.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#d09878"></span>Renata</div>
+          Aquí falta algo.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a9888"></span>Andrés</div>
+          ¿Qué falta?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#d09878"></span>Renata</div>
+          Yo.
+        </div>
+        <p>Andrés la miró. Tomó el pincel. Dibujó.</p>
+        <p class="atm">Algunos mapas no se terminan solos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EPILOGUE -->
+  <section class="chapter ch-ep" id="ch-ep">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Epílogo</div>
+      <h2 class="ch-title reveal d1">Lo que queda cuando el mapa ya no alcanza</h2>
+      <div class="ch-text reveal d2">
+        <p>La librería siguió abierta. Andrés dejó de guardar cosas en cajones — o al menos, dejó de guardar las mismas cosas.</p>
+        <p>La lista con el nombre siguió ahí. Pero dejó de ser una herida y se volvió algo más parecido a una cicatriz: prueba de que algo pasó, no de que todavía duele igual.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <p>Mateo cumplió doce años y le pidió a Andrés que le enseñara a dibujar mapas. Andrés le enseñó. Mateo dibujó primero su cuarto, luego su escuela, luego el barrio entero con una precisión sorprendente para alguien que todavía no sabía dónde estaba la mayoría de los países del mundo.</p>
+        <p>La señora Iris puso el mapa de Andrés enmarcado en la pared del café. Sin pedirle permiso. Cuando Andrés llegó a reclamarlo, ya tenía tres personas preguntando si estaba a la venta.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c8a0b8"></span>La Señora Iris</div>
+          Las cosas guardadas no le sirven a nadie. Las expuestas, a todos.
+        </div>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <p>Renata no se fue. No porque no tuviera a dónde ir — tenía. Se quedó porque encontró algo que hacía mucho no encontraba: un lugar que no le pedía ser otra persona.</p>
+        <p>Años después, cuando alguien le preguntaba cómo había llegado a ese barrio, a esa librería, a esa vida que no había planeado, ella siempre decía lo mismo:</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#d09878"></span>Renata</div>
+          Entré a buscar un mapa de un lugar que ya no existe. Y encontré uno de un lugar que estaba empezando.
+        </div>
+        <p class="atm">
+          El Cartógrafo del Olvido nunca olvidó nada.<br>
+          Aprendió, en cambio, a dejar espacio en el mapa<br>
+          para lo que todavía no había llegado.
+        </p>
+      </div>
+
+      <div class="end-wrap reveal d2">
+        <div class="end-title">Fin</div>
+        <div class="end-body">
+          Hay personas que cargan mapas de lugares que ya no existen.<br>
+          Y hay personas que, sin saberlo,<br>
+          se convierten en el lugar al que uno quiere llegar.<br><br>
+          No todos los finales son tristes.<br>
+          Algunos son el principio de algo<br>
+          que no sabías que necesitabas.
+        </div>
+        <div class="end-sig">Kinosaby</div>
+        <button class="end-restart" onclick="window.scrollTo({top:0,behavior:'smooth'});document.getElementById('cover').classList.remove('hide');">
+          Leer de nuevo ↑
+        </button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

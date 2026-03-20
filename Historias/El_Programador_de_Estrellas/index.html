@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>El Programador de Estrellas · Kinosaby</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=Sacramento&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<a href="../../index.html" style="position:fixed; top:20px; left:20px; z-index:100; color:var(--muted); text-decoration:none; font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px; background:rgba(255,255,255,.05); padding:8px 15px; border-radius:50px; border:1px solid rgba(255,255,255,.1); backdrop-filter:blur(5px); transition:all .3s;">← Volver</a>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress"></div>
+
+<div id="nav">
+  <div class="nav-dot active" data-i="0"></div>
+  <div class="nav-dot" data-i="1"></div>
+  <div class="nav-dot" data-i="2"></div>
+  <div class="nav-dot" data-i="3"></div>
+  <div class="nav-dot" data-i="4"></div>
+  <div class="nav-dot" data-i="5"></div>
+  <div class="nav-dot" data-i="6"></div>
+  <div class="nav-dot" data-i="7"></div>
+  <div class="nav-dot" data-i="8"></div>
+</div>
+
+<!-- ══ COVER ══ -->
+<div id="cover">
+  <div class="cover-label">Una historia · Por Kinosaby</div>
+  <div class="cover-title">El Programador<br>de Estrellas</div>
+  <div class="cover-sub">sobre escribir código que nadie más puede leer</div>
+  <div class="cover-rule">
+    <div class="cover-rule-line"></div>
+    <div class="cover-rule-dot"></div>
+    <div class="cover-rule-line"></div>
+  </div>
+  <div class="cover-chars">
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(74,114,200,.5);">💻</div>
+      <div class="cc-name">Sebastián</div>
+    </div>
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(200,160,248,.4);">🌙</div>
+      <div class="cc-name">Valeria</div>
+    </div>
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(160,200,120,.4);">🔭</div>
+      <div class="cc-name">Don Félix</div>
+    </div>
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(248,180,100,.4);">👩‍💻</div>
+      <div class="cc-name">Camila</div>
+    </div>
+    <div class="cc">
+      <div class="cc-av" style="border-color:rgba(200,80,120,.4);">📡</div>
+      <div class="cc-name">El Ingeniero</div>
+    </div>
+  </div>
+  <button class="cover-start" id="start-btn">Inicializar historia →</button>
+</div>
+
+<!-- ══ STORY ══ -->
+<div class="story">
+
+  <!-- CH 1 -->
+  <section class="chapter ch-1" id="ch-1">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo I</div>
+      <h2 class="ch-title reveal d1">El bug que nadie más veía</h2>
+      <div class="ch-text reveal d2">
+        <p class="atm">Hay errores en el código que no son errores.<br>Son el sistema diciéndote algo que aún no sabes leer.</p>
+        <p><em>Sebastián</em> llevaba tres días sin dormir bien cuando encontró el bug. No era un error cualquiera — era el tipo de bug que solo aparece a las 2 de la mañana, cuando la pantalla es lo único que ilumina el cuarto y el café ya se enfrió hace horas.</p>
+        <p>Tenía veintidós años, estudiaba Desarrollo de Software en una universidad del centro del país, y vivía en una pensión con paredes delgadas y una ventana que daba al cielo. Esa ventana era lo único que le gustaba sin reservas de ese lugar.</p>
+        <div class="code-block">
+          <span class="code-comment">// ERROR: función sin retorno definido</span><br>
+          <span class="code-fn">function</span> <span class="code-key">encontrarla</span>(<span class="code-str">universo</span>) {<br>
+          &nbsp;&nbsp;<span class="code-comment">// busca en cada coordenada</span><br>
+          &nbsp;&nbsp;<span class="code-comment">// no encuentra nada</span><br>
+          &nbsp;&nbsp;<span class="code-comment">// sigue buscando igual</span><br>
+          }
+        </div>
+        <p>Su compañera de clase <em>Camila</em> decía que programaba como si le hablara a las máquinas en lugar de instruirlas. Sebastián nunca entendió eso como crítica. Para él, las máquinas eran lo más honesto que existía — hacían exactamente lo que les pedías, ni más ni menos. El problema era saber qué pedirles.</p>
+        <p>La noche que encontró el bug en su proyecto final, también encontró otra cosa: desde su ventana, una estrella que no había visto antes. O tal vez siempre había estado ahí y él nunca había mirado lo suficiente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 2 -->
+  <section class="chapter ch-2" id="ch-2">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo II</div>
+      <h2 class="ch-title reveal d1">Valeria y el telescopio roto</h2>
+      <div class="ch-text reveal d2">
+        <p class="atm">Algunas personas miran el cielo para escapar.<br>Otras lo miran para encontrar donde pertenecen.</p>
+        <p><em>Valeria</em> estudiaba astronomía en la misma universidad, aunque nunca habían coincidido más que en el comedor. Tenía un telescopio viejo que había sido de su abuelo — con una lente rayada que distorsionaba las estrellas y las convertía en algo que parecía más arte que ciencia.</p>
+        <p>Nunca lo reparó. Le gustaba como veía las cosas con ese defecto.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <p>Se conocieron en la azotea de la pensión — los dos subieron la misma noche sin saber que el otro también iba ahí. Sebastián con su laptop, Valeria con su telescopio. Los dos mirando el mismo cielo desde ángulos distintos.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a0e8"></span>Valeria</div>
+          ¿Qué estás programando a las 3 de la mañana en una azotea?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          Una función que no funciona. ¿Qué estás mirando con un telescopio roto?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a0e8"></span>Valeria</div>
+          Cosas que con uno bueno no se ven igual.
+        </div>
+        <p>Sebastián cerró la laptop.</p>
+        <p>Esa noche Valeria le mostró cómo se veía Andrómeda con la lente rayada — borrosa, imprecisa, con destellos que no debían estar ahí. Era el objeto más hermoso que Sebastián había visto en su vida, y no sabía si era por la galaxia o por la persona que se la estaba mostrando.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 3 -->
+  <section class="chapter ch-3" id="ch-3">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo III</div>
+      <h2 class="ch-title reveal d1">Don Félix y el mapa del cielo</h2>
+      <div class="ch-text reveal d2">
+        <p><em>Don Félix</em> tenía setenta y un años y vivía en el departamento del tercer piso de la pensión. Había sido astrónomo amateur toda su vida — no el tipo que trabaja en observatorios, sino el tipo que pasa cuarenta años mirando el mismo pedazo de cielo desde el mismo lugar porque le parece suficiente.</p>
+        <p>Tenía cuadernos llenos de mapas dibujados a mano. Cada estrella en su lugar exacto, con fecha y hora. Cuarenta años de cielo, archivados en letra apretada.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#90c880"></span>Don Félix</div>
+          Tú eres el que programa en la azotea.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          Sí. ¿Le molesta?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#90c880"></span>Don Félix</div>
+          Al contrario. Es la primera vez en treinta años que alguien más sube. ¿Y qué programas exactamente?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          Ahorita, nada. Estoy atascado.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#90c880"></span>Don Félix</div>
+          Los astrónomos también nos atascamos. A veces una estrella no aparece donde debería. Y uno puede frustrarse, o puede preguntarse por qué el cielo decidió cambiar de lugar.
+        </div>
+        <p>Don Félix le abrió uno de sus cuadernos. En una página de 1987 había una nota al margen:</p>
+        <p style="text-align:center;font-style:italic;font-size:17px;color:rgba(74,114,200,.8);padding:8px 0;"><em>"Lo que no encuentras tal vez todavía no ha llegado."</em></p>
+        <p>Sebastián leyó eso y pensó en su función sin retorno. Y luego, sin querer, pensó en Valeria.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 4 -->
+  <section class="chapter ch-4" id="ch-4">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo IV</div>
+      <h2 class="ch-title reveal d1">Camila y el código que no debería funcionar</h2>
+      <div class="ch-text reveal d2">
+        <p class="atm">Hay cosas que deberían romperse y no lo hacen.<br>Y eso, a veces, es lo más perturbador de todo.</p>
+        <p><em>Camila</em> era la mejor programadora de su generación y lo sabía sin presumirlo. Llevaba dos años siendo la compañera de proyecto de Sebastián, lo cual significaba que pasaban muchas horas discutiendo sobre arquitecturas de software y ninguna hora hablando de lo que realmente importaba.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#f8b060"></span>Camila</div>
+          Seba. Llevas una semana llegando tarde y subiendo a la azotea a las 3 de la madrugada. ¿Qué está pasando?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          Estoy trabajando en el proyecto.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#f8b060"></span>Camila</div>
+          Revisé el repositorio. No has hecho un solo commit en cinco días.
+        </div>
+        <p>Sebastián no respondió.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#f8b060"></span>Camila</div>
+          ¿Es por la de astronomía?
+        </div>
+        <p>Silencio.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#f8b060"></span>Camila</div>
+          Sebastián. Escríbele. No escribas código sobre ella — escríbele directamente.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          El código es más fácil.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#f8b060"></span>Camila</div>
+          Lo sé. Por eso te digo que no lo hagas.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 5 -->
+  <section class="chapter ch-5" id="ch-5">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo V</div>
+      <h2 class="ch-title reveal d1">El proyecto que Sebastián nunca entregó</h2>
+      <div class="ch-text reveal d2">
+        <p>Sebastián no le escribió a Valeria de frente. Hizo lo que sabía hacer: programó.</p>
+        <p>Pasó tres semanas escribiendo un sistema que mapeaba estrellas en tiempo real, usando las coordenadas que Don Félix le prestó de sus cuadernos, con una interfaz que mostraba el cielo exactamente como lo veía el telescopio roto de Valeria — borroso, impreciso, lleno de destellos que no deberían estar ahí.</p>
+        <div class="code-block">
+          <span class="code-comment">// Para ver el cielo como tú lo ves</span><br>
+          <span class="code-fn">function</span> <span class="code-key">aplicarLenteRayada</span>(<span class="code-str">estrella</span>) {<br>
+          &nbsp;&nbsp;<span class="code-key">return</span> {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;luz: estrella.luz * <span class="code-str">1.4</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;forma: <span class="code-str">"imperfecta"</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;destellos: <span class="code-fn">generarAleatorios</span>(),<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;nota: <span class="code-str">"así se ven mejor"</span><br>
+          &nbsp;&nbsp;}<br>
+          }
+        </div>
+        <p>Era el mejor trabajo que había hecho en su vida. Era también el proyecto que nunca entregó a su profesor — porque no era para eso.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <p>La noche que terminó de escribirlo, subió a la azotea. Valeria estaba ahí, como había estado muchas noches desde aquella primera vez. Le abrió la laptop.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          Te programé el cielo.
+        </div>
+        <p>Valeria miró la pantalla. Miró a Sebastián. Volvió a mirar la pantalla.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a0e8"></span>Valeria</div>
+          ¿Lo hiciste como lo veo yo?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          Con todos los defectos y todo.
+        </div>
+        <p>Hubo un silencio largo. El tipo de silencio que puede ir hacia cualquier lado.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a0e8"></span>Valeria</div>
+          Sebastián. Esto es lo más bonito que alguien ha hecho por mí.
+        </div>
+        <p class="atm">Y ahí debería terminar la historia.<br>Pero las historias bonitas raramente terminan ahí.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 6 -->
+  <section class="chapter ch-6" id="ch-6">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo VI</div>
+      <h2 class="ch-title reveal d1">El ingeniero y la beca que cambió todo</h2>
+      <div class="ch-text reveal d2">
+        <p><em>El Ingeniero Morales</em> era el director del programa de astrofísica computacional de una universidad en el extranjero. Llegó a la ciudad por tres días para dar una conferencia y terminó pasando cinco porque conoció el trabajo de Valeria — su tesis sobre la distorsión lumínica en telescopios con defectos ópticos.</p>
+        <p>Era, sin saberlo él, exactamente el tipo de investigación para la que tenía una beca.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#a080d8"></span>El Ingeniero</div>
+          Señorita Valeria. Su trabajo es extraordinario. Tenemos una beca de tres años para investigación en astrofísica computacional. Usted es exactamente el perfil que buscamos.
+        </div>
+        <p>Valeria escuchó los detalles. Firmaba en dos semanas. Salía en un mes.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <p>Esa noche subió a la azotea. Sebastián ya estaba ahí, con la laptop abierta en el proyecto del cielo — había seguido añadiéndole cosas sin decírselo. Nuevas constelaciones. Notas escondidas en el código que describían cómo se veía ella cuando encontraba algo nuevo en el telescopio.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a0e8"></span>Valeria</div>
+          Me ofrecieron una beca. En el extranjero. Tres años.
+        </div>
+        <p>Sebastián cerró la laptop despacio.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          ¿La vas a aceptar?
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a0e8"></span>Valeria</div>
+          Es lo que he buscado toda mi vida, Sebastián.
+        </div>
+        <p>Él asintió. Una vez. Despacio.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          Entonces la tienes que aceptar.
+        </div>
+        <p class="atm">Lo dijo sin dudar.<br>Eso fue lo más difícil que hizo en su vida.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 7 -->
+  <section class="chapter ch-7" id="ch-7">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Capítulo VII</div>
+      <h2 class="ch-title reveal d1">La última noche en la azotea</h2>
+      <div class="ch-text reveal d2">
+        <p>Don Félix los encontró a los dos en la azotea la noche antes de que Valeria se fuera. No dijo nada. Sacó su cuaderno más viejo y lo dejó en el suelo entre ellos, abierto en una página de 1994.</p>
+        <p>En esa página había un dibujo de una estrella con una nota que decía: <em>"La ví por primera vez esta noche. No sé si vuelve. Pero valió verla."</em></p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <p>Camila le llevó café a Sebastián sin preguntar. Se sentó a su lado sin decir nada importante — solo estuvo ahí, que era lo que se necesitaba.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <p>Antes de que amaneciera, Valeria tomó la laptop de Sebastián y abrió el repositorio del proyecto. Añadió un archivo nuevo. Lo llamó <code>para_cuando_vuelva.txt</code> y escribió adentro una sola línea:</p>
+        <div class="code-block">
+          <span class="code-comment">// coordenadas de regreso</span><br>
+          <span class="code-str">"La azotea. La misma hora. Cuando pueda."</span>
+        </div>
+        <p>Hizo commit. Hizo push.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a0e8"></span>Valeria</div>
+          Ahora está en el repositorio. No se puede borrar.
+        </div>
+        <p>Sebastián leyó el archivo. Lo leyó dos veces.</p>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#4a72c8"></span>Sebastián</div>
+          Los commits son para siempre.
+        </div>
+        <div class="dlg">
+          <div class="spk"><span class="spk-dot" style="background:#c0a0e8"></span>Valeria</div>
+          Exacto.
+        </div>
+        <p class="atm">El sol empezó a salir.<br>Las estrellas se apagaron una por una,<br>como siempre hacen cuando ya cumplieron su función.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EPILOGUE -->
+  <section class="chapter ch-ep" id="ch-ep">
+    <div class="ch-inner">
+      <div class="ch-num reveal">Epílogo</div>
+      <h2 class="ch-title reveal d1">Git log: historial de cambios</h2>
+      <div class="ch-text reveal d2">
+
+        <div class="code-block">
+          <span class="code-comment">$ git log --oneline</span><br><br>
+          <span class="code-str">a1f3c9e</span> — Valeria parte. Cielo despejado.<br>
+          <span class="code-str">b82d4a1</span> — Sebastián sigue subiendo a la azotea.<br>
+          <span class="code-str">c74e2f8</span> — Don Félix abre su cuaderno del 94.<br>
+          <span class="code-str">d93b1c7</span> — Camila hace el café sin preguntar.<br>
+          <span class="code-str">e01a5d3</span> — El telescopio roto sigue en la azotea.<br>
+          <span class="code-str">f28c9b2</span> — <span class="code-key">para_cuando_vuelva.txt</span> sin modificar.<br>
+          <span class="code-str">g47f0e1</span> — Tres años. Contando commits.
+        </div>
+
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+
+        <p>Sebastián terminó su carrera. Consiguió trabajo en una empresa que construía software para observatorios astronómicos — no por casualidad.</p>
+        <p>Don Félix siguió llenando cuadernos. Sebastián heredó su lugar en la azotea sin que nadie se lo dijera — simplemente un día fue el único que subía, y eso lo convirtió en el guardián del mismo cielo.</p>
+        <p>Camila se convirtió en la mejor arquitecta de software que conoció en su vida. Y siguió diciéndole las cosas de frente, porque era su forma de querer.</p>
+        <div class="sdiv"><div class="sdiv-l"></div><div class="sdiv-i">✦</div><div class="sdiv-l"></div></div>
+        <p>Tres años, dos meses y once días después de que Valeria se fue, el repositorio recibió un pull request.</p>
+        <p>Era un solo archivo modificado. <code>para_cuando_vuelva.txt</code>.</p>
+        <p>El cambio era una línea nueva al final:</p>
+
+        <div class="code-block">
+          <span class="code-comment">// actualización de coordenadas</span><br>
+          <span class="code-str">"La azotea. Esta noche. Ya llegué."</span>
+        </div>
+
+        <p>Sebastián leyó la notificación en su teléfono a las 11:47 de la noche.</p>
+        <p>Aprobó el pull request sin leer nada más.</p>
+        <p>Y subió.</p>
+
+        <p class="atm">Algunos errores no son errores.<br>Son el sistema esperando la entrada correcta.<br><br>A veces solo hay que tener paciencia<br>hasta que el dato llega.</p>
+
+      </div>
+
+      <div class="end-wrap reveal d2">
+        <div class="end-title">Fin</div>
+        <div class="end-body">
+          El programador de estrellas no las creó.<br>
+          Solo aprendió a escribir código que las esperara.<br><br>
+          A veces amar no es hacer gran cosa.<br>
+          Es dejar un archivo en el repositorio<br>
+          y no cerrarlo nunca.<br><br>
+          Por si acaso vuelven.
+        </div>
+        <div class="end-sig">Kinosaby</div>
+        <button class="end-restart" onclick="window.scrollTo({top:0,behavior:'smooth'});document.getElementById('cover').classList.remove('hide');">
+          Leer de nuevo ↑
+        </button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
