@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cajita de Música · Para Ti 🎵</title>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<a href="../index.html" class="btn-volver">← Portal</a>
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+  <div>
+    <div class="title">Para Ti, Piojito 🌸</div>
+    <div class="subtitle">una cajita de música hecha con amor</div>
+  </div>
+
+  <div class="scene" id="scene">
+    <!-- TAPA -->
+    <div class="lid" id="lid">
+      <div class="lid-top">
+        <span class="lid-corner tl">✦</span>
+        <span class="lid-corner tr">✦</span>
+        <span class="lid-corner bl">✦</span>
+        <span class="lid-corner br">✦</span>
+        <div class="lid-rose">🌹</div>
+      </div>
+      <div class="lid-inner"></div>
+    </div>
+
+    <!-- CUERPO -->
+    <div class="box-body">
+      <div class="box-interior" id="interior">
+        <div class="mirror"></div>
+
+        <!-- BAILARINA -->
+        <div class="ballerina-wrap" id="ballerina">
+          <div class="ballerina">
+            <div class="b-arms">
+              <div class="b-arm l"></div>
+              <div class="b-arm r"></div>
+            </div>
+            <div class="b-head"></div>
+            <div class="b-body"></div>
+            <div class="b-tutu"></div>
+            <div class="b-legs">
+              <div class="b-leg l"></div>
+              <div class="b-leg r"></div>
+            </div>
+            <div class="b-shoes">
+              <div class="b-shoe"></div>
+              <div class="b-shoe"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pedestal"></div>
+        <div class="box-bottom-deco">
+          <div class="jewel" style="background:#ff80b0;box-shadow:0 0 6px #ff80b0;"></div>
+          <div class="jewel" style="background:#b080ff;box-shadow:0 0 6px #b080ff;"></div>
+          <div class="jewel" style="background:#80c0ff;box-shadow:0 0 6px #80c0ff;"></div>
+          <div class="jewel" style="background:#ff80b0;box-shadow:0 0 6px #ff80b0;"></div>
+        </div>
+      </div>
+
+      <!-- llave -->
+      <div class="key-wrap">
+        <div class="key" id="key">🔑<div class="key-stem"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="open-btn" id="open-btn">✦ Abrir la cajita ✦</button>
+  <div class="msg-box" id="msg-box">Haz clic para descubrir lo que guarda...</div>
+  <div class="sig">Kinosaby</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

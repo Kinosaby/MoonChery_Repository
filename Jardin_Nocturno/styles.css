@@ -1,0 +1,33 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#030508;overflow-y:auto;font-family:'Nunito',sans-serif;}
+canvas{display:block;}
+#ui{
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  pointer-events:none;display:flex;flex-direction:column;
+  align-items:center;justify-content:space-between;padding:32px 20px;
+}
+.top{text-align:center;}
+.title{font-family:'Sacramento',cursive;font-size:clamp(32px,7vw,56px);color:#d8f0d0;text-shadow:0 0 30px rgba(120,220,80,.4),0 0 60px rgba(80,180,40,.2);line-height:1;}
+.sub{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(216,240,208,.32);margin-top:6px;}
+.bottom{text-align:center;}
+.hint{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(216,240,208,.25);animation:pulse 2.5s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:.25;}50%{opacity:.55;}}
+.sig{font-family:'Sacramento',cursive;font-size:22px;color:rgba(216,240,208,.2);margin-top:8px;}
+
+/* mensaje flotante al click */
+.float-msg{
+  position:fixed;pointer-events:none;
+  font-family:'Sacramento',cursive;font-size:18px;
+  color:#c8f0a0;text-shadow:0 0 10px rgba(120,220,80,.6);
+  animation:floatUp 2s ease-out forwards;
+  white-space:nowrap;
+}
+@keyframes floatUp{0%{opacity:0;transform:translateY(10px);}20%{opacity:1;}80%{opacity:1;}100%{opacity:0;transform:translateY(-60px);}}
+
+.btn-volver {
+  position:fixed; top:20px; left:20px; z-index:100; color:rgba(216,240,208,.32); text-decoration:none; 
+  font-family:'Nunito',serif; font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  background:rgba(255,255,255,.05); padding:8px 15px; border-radius:50px; border:1px solid rgba(255,255,255,.1); 
+  backdrop-filter:blur(10px); transition:all .3s;
+}
+.btn-volver:hover { color:#d8f0d0; border-color:rgba(120,220,80,.4); background:rgba(120,220,80,.1); }

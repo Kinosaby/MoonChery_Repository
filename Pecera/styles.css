@@ -1,0 +1,156 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:radial-gradient(ellipse at 50% 30%, #1a0a2e 0%, #0a0514 100%);
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  font-family:'Nunito',sans-serif;
+  overflow:hidden;
+}
+
+/* ── TÍTULO ── */
+.title-wrap{text-align:center;margin-bottom:22px;animation:fadeDown .8s both;}
+.title{
+  font-family:'Sacramento',cursive;
+  font-size:clamp(32px,6vw,52px);
+  color:#e8d8f8;
+  text-shadow:0 0 30px rgba(180,120,255,.5);
+  line-height:1;
+}
+.subtitle{
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(232,216,248,.38);margin-top:6px;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-14px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── MARCO EXTERIOR ── */
+.tank-wrap{
+  position:relative;
+  animation:fadeUp .9s .2s both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* soporte de madera */
+.tank-stand{
+  width:clamp(260px,60vw,420px);
+  height:18px;
+  background:linear-gradient(180deg,#6a3a1a,#4a2810);
+  border-radius:0 0 10px 10px;
+  margin:0 auto;
+  box-shadow:0 4px 16px rgba(0,0,0,.5);
+  position:relative;
+}
+.tank-stand::before,.tank-stand::after{
+  content:'';position:absolute;bottom:-26px;
+  width:24px;height:26px;
+  background:linear-gradient(180deg,#4a2810,#3a1c08);
+  border-radius:0 0 6px 6px;
+}
+.tank-stand::before{left:20px;}
+.tank-stand::after{right:20px;}
+
+/* ── PECERA ── */
+.tank{
+  width:clamp(260px,60vw,420px);
+  height:clamp(200px,40vw,320px);
+  position:relative;
+  overflow:hidden;
+  border-radius:12px 12px 0 0;
+  cursor:pointer;
+}
+
+/* vidrio — efecto con múltiples capas */
+.tank::before{
+  content:'';position:absolute;inset:0;z-index:20;pointer-events:none;
+  background:
+    linear-gradient(105deg,rgba(255,255,255,.08) 0%,transparent 40%),
+    linear-gradient(to bottom,rgba(255,255,255,.04),transparent);
+  border-radius:12px 12px 0 0;
+}
+/* borde vidrio */
+.tank::after{
+  content:'';position:absolute;inset:0;z-index:21;pointer-events:none;
+  border:2.5px solid rgba(180,220,255,.25);
+  border-radius:12px 12px 0 0;
+  box-shadow:
+    inset 0 0 40px rgba(80,150,255,.08),
+    0 0 30px rgba(80,180,255,.15);
+}
+
+/* agua */
+canvas#tank-canvas{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  border-radius:12px 12px 0 0;
+}
+
+/* ondas superficiales */
+.surface{
+  position:absolute;top:0;left:0;right:0;height:18px;
+  background:linear-gradient(180deg,rgba(120,200,255,.18),transparent);
+  z-index:10;pointer-events:none;
+  animation:surfaceWave 3s ease-in-out infinite;
+}
+@keyframes surfaceWave{
+  0%,100%{transform:scaleY(1) translateY(0);}
+  50%{transform:scaleY(1.3) translateY(-2px);}
+}
+
+/* tapita superior */
+.tank-lid{
+  width:calc(clamp(260px,60vw,420px) + 8px);
+  height:12px;
+  background:linear-gradient(180deg,#2a2a3a,#1a1a2a);
+  border-radius:8px 8px 0 0;
+  margin:0 auto;
+  border:1px solid rgba(255,255,255,.08);
+  position:relative;
+  display:flex;align-items:center;justify-content:center;gap:40px;
+}
+/* lámparas LED */
+.led{width:8px;height:8px;border-radius:50%;animation:ledGlow 2s ease-in-out infinite;}
+.led.pink{background:#ff80b0;box-shadow:0 0 8px #ff80b0;animation-delay:.3s;}
+.led.blue{background:#80c0ff;box-shadow:0 0 8px #80c0ff;}
+.led.green{background:#80ffb0;box-shadow:0 0 8px #80ffb0;animation-delay:.6s;}
+@keyframes ledGlow{0%,100%{opacity:.7;}50%{opacity:1;transform:scale(1.3);}}
+
+/* ── MENSAJE ── */
+.msg-wrap{text-align:center;margin-top:20px;animation:fadeUp .8s .5s both;}
+.msg{
+  font-size:13px;letter-spacing:.5px;
+  color:rgba(232,216,248,.4);
+  font-style:italic;
+}
+.tap-hint{
+  margin-top:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(232,216,248,.22);
+  animation:blink 2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:.22;}50%{opacity:.5;}}
+
+/* ── CORAZONCITOS al click ── */
+.heart-pop{
+  position:fixed;pointer-events:none;
+  font-size:clamp(16px,3vw,22px);
+  animation:heartFly .9s ease-out forwards;
+  z-index:999;
+}
+@keyframes heartFly{
+  0%{opacity:1;transform:translateY(0) scale(.5);}
+  100%{opacity:0;transform:translateY(-70px) scale(1.3);}
+}
+
+/* firma */
+.sig{
+  font-family:'Sacramento',cursive;
+  font-size:22px;color:rgba(232,216,248,.28);
+  margin-top:16px;text-align:center;
+  animation:fadeUp .8s .7s both;
+}
+
+.btn-volver {
+  position:fixed; top:20px; left:20px; z-index:100; color:rgba(232,216,248,.22); text-decoration:none; 
+  font-family:'Nunito',serif; font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  background:rgba(255,255,255,.05); padding:8px 15px; border-radius:50px; border:1px solid rgba(255,255,255,.1); 
+  backdrop-filter:blur(10px); transition:all .3s;
+}
+.btn-volver:hover { color:#e8d8f8; border-color:rgba(180,120,255,.4); background:rgba(180,120,255,.1); }
