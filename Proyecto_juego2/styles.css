@@ -1,0 +1,106 @@
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;touch-action:none;}
+body{background:#000;color:#fff;font-family:'Josefin Sans',sans-serif;width:100vw;height:100vh;overflow:hidden;}
+canvas{position:fixed;inset:0;display:block;}
+#bgC{z-index:1;}#gC{z-index:2;}
+
+/* ── HUD ── */
+#hud{position:fixed;top:0;left:0;right:0;z-index:20;padding:14px 22px 20px;
+  display:flex;justify-content:space-between;align-items:flex-start;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent);pointer-events:none;}
+.hb{text-align:center;}
+.hl{font-size:.52rem;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,200,215,.5);margin-bottom:2px;}
+.hv{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;line-height:1;color:#fff;}
+.lr{font-size:.95rem;letter-spacing:2px;margin-top:2px;}
+
+/* ── PROGRESS BAR ── */
+#bar-wrap{position:fixed;bottom:0;left:0;right:0;z-index:20;padding:0 22px 16px;pointer-events:none;}
+#bar-lbl{font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,200,215,.45);text-align:center;margin-bottom:6px;}
+.bar-bg{height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
+#bar-fill{height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#ff4d6d,#ffb3c1);
+  box-shadow:0 0 10px rgba(255,77,109,.8);transition:width .5s cubic-bezier(.16,1,.3,1);}
+
+/* ── COMBO ── */
+#combo{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:25;text-align:center;
+  pointer-events:none;opacity:0;transition:opacity .25s;}
+#combo.on{opacity:1;}
+#combo-n{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.2rem;font-weight:500;
+  color:#ffd700;filter:drop-shadow(0 0 14px rgba(255,215,0,.9));}
+#combo-l{font-size:.6rem;letter-spacing:4px;color:rgba(255,215,0,.55);}
+
+/* ── OVERLAYS ── */
+.ovl{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;padding:32px;
+  background:rgba(4,0,14,.92);backdrop-filter:blur(14px);transition:opacity .45s ease;}
+.ovl.off{opacity:0;pointer-events:none;}
+.ovl.gone{display:none;}
+
+/* ── START SCREEN ── */
+#o-start .T{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(3rem,9vw,5rem);font-weight:300;line-height:1.05;
+  background:linear-gradient(135deg,#fff 25%,#ffb3c1 55%,#ff4d6d 90%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px;}
+#o-start .S{font-weight:100;letter-spacing:4px;font-size:.7rem;
+  color:rgba(255,200,215,.5);text-transform:uppercase;margin-bottom:40px;}
+.how{font-weight:300;font-size:.82rem;line-height:2;color:rgba(255,200,215,.5);margin-bottom:38px;max-width:310px;}
+.how em{color:rgba(255,180,200,.75);font-style:normal;}
+
+/* ── BUTTONS ── */
+.btn{padding:14px 46px;border-radius:100px;border:none;cursor:pointer;
+  font-family:'Josefin Sans',sans-serif;font-weight:400;font-size:.78rem;
+  letter-spacing:3px;text-transform:uppercase;transition:all .22s ease;}
+.btn-r{background:linear-gradient(135deg,#ff4d6d,#c9184a);color:#fff;box-shadow:0 8px 40px rgba(255,77,109,.45);}
+.btn-r:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 16px 55px rgba(255,77,109,.65);}
+.btn-r:active{transform:scale(.97);}
+
+/* ── QUOTE ── */
+#o-quote{z-index:110;}
+#qe{font-size:3.8rem;margin-bottom:22px;animation:qp 1.3s ease-in-out infinite;}
+@keyframes qp{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+#qt{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1.3rem,4vw,2rem);font-weight:300;line-height:1.65;
+  color:#fff;max-width:380px;margin-bottom:16px;}
+#qa{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,179,193,.5);margin-bottom:32px;}
+#qt-tap{font-size:.63rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.2);animation:blk 1.6s ease infinite;}
+@keyframes blk{0%,100%{opacity:.2}50%{opacity:.8}}
+
+/* ── LEVEL UP ── */
+#o-lvl{background:transparent;backdrop-filter:none;z-index:105;pointer-events:none;}
+#lu-n{font-size:.6rem;letter-spacing:5px;text-transform:uppercase;color:rgba(255,200,215,.55);margin-bottom:8px;}
+#lu-name{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(2.8rem,8vw,4.2rem);font-weight:300;
+  background:linear-gradient(135deg,#ffd700,#ffb3c1,#ff4d6d);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:lp .55s cubic-bezier(.16,1,.3,1);}
+@keyframes lp{from{transform:scale(.4) translateY(20px);opacity:0}to{transform:none;opacity:1}}
+#lu-msg{font-weight:100;font-size:.78rem;letter-spacing:2.5px;font-style:italic;
+  color:rgba(255,210,220,.45);margin-top:12px;max-width:280px;}
+
+/* ── GAME OVER ── */
+#o-over .gt{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(2.2rem,6vw,3.2rem);font-weight:300;
+  background:linear-gradient(135deg,#fff,#ffb3c1);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+#o-over .gl{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,200,215,.4);margin-bottom:6px;}
+#go-sc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:4rem;font-weight:300;color:#fff;line-height:1;margin-bottom:8px;}
+#go-best{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,215,0,.45);margin-bottom:28px;}
+
+/* ── FLASH ── */
+#flash{position:fixed;inset:0;z-index:200;pointer-events:none;
+  background:rgba(255,77,109,.2);opacity:0;transition:opacity .08s ease;}
+
+/* ── BACK BUTTON ── */
+.btn-volver{
+  position:fixed;bottom:22px;right:22px;z-index:300;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,179,193,.2);
+  color:rgba(255,179,193,.55);
+  padding:10px 22px;border-radius:50px;
+  font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;
+  text-decoration:none;backdrop-filter:blur(8px);
+  transition:all .25s;font-family:'Josefin Sans',sans-serif;
+}
+.btn-volver:hover{
+  background:rgba(255,77,109,.12);
+  border-color:rgba(255,77,109,.4);
+  color:rgba(255,179,193,.9);
+}

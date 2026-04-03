@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Universo de Amor ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Josefin+Sans:wght@100;300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<canvas id="bgC"></canvas>
+<canvas id="gC"></canvas>
+
+<!-- HUD -->
+<div id="hud">
+  <div class="hb"><div class="hl">Puntos</div><div class="hv" id="h-sc">0</div></div>
+  <div class="hb"><div class="hl">Vidas</div><div class="lr" id="h-lv">❤️❤️❤️❤️❤️</div></div>
+  <div class="hb"><div class="hl">Nivel</div><div class="hv" id="h-nl">1</div></div>
+</div>
+
+<div id="combo"><div id="combo-n">×5</div><div id="combo-l">¡COMBO!</div></div>
+
+<div id="bar-wrap">
+  <div id="bar-lbl">NIVEL 1 — El Amanecer</div>
+  <div class="bar-bg"><div id="bar-fill"></div></div>
+</div>
+
+<!-- START -->
+<div class="ovl" id="o-start">
+  <div class="T">Universo<br>de Amor</div>
+  <div class="S">Creado solo para ti</div>
+  <div class="how">
+    <em>💗 💕 ❤️ 💖</em> Atrapa los corazones<br>
+    <em>⭐ 💫</em> Estrellas = mensajes especiales<br>
+    <em>💔</em> ¡Esquiva los corazones rotos!<br>
+    Mueve el dedo o el mouse para jugar
+  </div>
+  <button class="btn btn-r" id="btn-start">Comenzar ✨</button>
+</div>
+
+<!-- QUOTE -->
+<div class="ovl off" id="o-quote">
+  <div id="qe">⭐</div>
+  <div id="qt"></div>
+  <div id="qa"></div>
+  <div id="qt-tap">Toca para continuar</div>
+</div>
+
+<!-- LEVEL UP -->
+<div class="ovl off" id="o-lvl">
+  <div id="lu-n">NIVEL 2</div>
+  <div id="lu-name">Aurora Boreal</div>
+  <div id="lu-msg"></div>
+</div>
+
+<!-- GAME OVER -->
+<div class="ovl gone" id="o-over">
+  <div class="gt">Fue hermoso...</div>
+  <div class="gl">Tu puntuación final</div>
+  <div id="go-sc">0</div>
+  <div id="go-best"></div>
+  <button class="btn btn-r" onclick="location.reload()">Jugar de nuevo 💕</button>
+</div>
+
+<div id="flash"></div>
+
+<!-- Botón de regreso al portal -->
+<a href="../index.html" class="btn-volver">Volver al Portal</a>
+
+<script src="script.js"></script>
+</body>
+</html>
