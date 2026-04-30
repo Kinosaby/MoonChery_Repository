@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌸 Para Ti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="card">
+  <div class="flower-canvas-wrap">
+    <canvas id="flowerCanvas"></canvas>
+  </div>
+
+  <div class="divider"><span>Para Ti</span></div>
+
+  <div class="card-body">
+    <div class="msg-wrap">
+      <p class="msg-text fade-in" id="msgText"></p>
+      <span class="msg-emoji" id="msgEmoji"></span>
+    </div>
+    <div class="dots" id="dots"></div>
+    <button class="btn-next" id="btnNext">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+      Siguiente mensaje
+    </button>
+  </div>
+
+  <div class="card-footer">
+    <p>✦ &nbsp; con todo el cariño del mundo &nbsp; ✦</p>
+  </div>
+</div>
+
+<a href="../index.html" class="btn-volver">Volver al Portal</a>
+
+<script src="script.js"></script>
+</body>
+</html>
