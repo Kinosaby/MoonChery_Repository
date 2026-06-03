@@ -495,7 +495,7 @@ body {
 }
 
 /* ── Botón de regreso ── */
-.btn-back {
+.btn-volver {
     position: fixed;
     top: 16px;
     left: 16px;
@@ -515,7 +515,7 @@ body {
     transition: background 0.25s, transform 0.2s;
 }
 
-.btn-back:hover {
+.btn-volver:hover {
     background: rgba(255, 215, 0, 0.25);
     transform: translateX(-3px);
 }

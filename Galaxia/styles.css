@@ -17,7 +17,7 @@ html, body {
 }
 
 /* ── BOTÓN VOLVER ── */
-.btn-back {
+.btn-volver {
   position: fixed;
   top: 25px;
   left: 25px;
@@ -39,7 +39,7 @@ html, body {
   text-transform: uppercase;
 }
 
-.btn-back:hover {
+.btn-volver:hover {
   background: rgba(212, 64, 104, 0.15);
   border-color: #d44068;
   transform: translateX(-5px);

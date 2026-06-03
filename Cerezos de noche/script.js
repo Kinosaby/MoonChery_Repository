@@ -432,10 +432,7 @@ function drawFrame() {
 
     // Skip glow for tiny blossoms
     if (r > 3) {
-      const g = ctxF.createRadialGradient(bx,by,0,bx,by,r*2.2);
-      g.addColorStop(0, cs + (alpha*0.35).toFixed(3) + ')');
-      g.addColorStop(1, 'rgba(0,0,0,0)');
-      ctxF.fillStyle = g;
+      ctxF.fillStyle = cs + (alpha*0.12).toFixed(3) + ')';
       ctxF.beginPath(); ctxF.arc(bx, by, r*2.2, 0, PI2); ctxF.fill();
     }
     ctxF.fillStyle = cs + alpha.toFixed(3) + ')';
@@ -458,10 +455,7 @@ function drawFrame() {
     ctxF.translate(px, py);
     ctxF.rotate(PET.rot[i]);
     if (sz > 2.5) {
-      const gg = ctxF.createRadialGradient(0,0,0,0,0,sz*2.4);
-      gg.addColorStop(0, PET_COLOR[i] + (PET.alpha[i]*0.28).toFixed(2) + ')');
-      gg.addColorStop(1, 'rgba(0,0,0,0)');
-      ctxF.fillStyle = gg;
+      ctxF.fillStyle = PET_COLOR[i] + (PET.alpha[i]*0.08).toFixed(2) + ')';
       ctxF.beginPath(); ctxF.arc(0,0,sz*2.4,0,PI2); ctxF.fill();
     }
     ctxF.fillStyle = PET_COLOR[i] + PET.alpha[i].toFixed(2) + ')';
