@@ -122,6 +122,18 @@ body{
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
+/* Card Date Badge */
+.card-date {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: var(--gold-l);
+  opacity: 0.65;
+  margin-top: 8px;
+}
+
 @media(max-width:860px){
   .grid-4{grid-template-columns:repeat(2,1fr);}
   .grid-3{grid-template-columns:repeat(2,1fr);}
