@@ -126,12 +126,18 @@ body{
 .card-date {
   display: block;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
+  font-size: 10px;
   font-style: italic;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: var(--gold-l);
-  opacity: 0.65;
-  margin-top: 8px;
+  opacity: 0.45;
+  margin-top: auto;
+  padding-top: 10px;
+  text-align: right;
+  transition: opacity 0.3s;
+}
+.card:hover .card-date {
+  opacity: 0.75;
 }
 
 @media(max-width:860px){
