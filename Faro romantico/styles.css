@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #02040e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.frame {
+  position: relative;
+  width: min(900px, 98vw);
+  aspect-ratio: 16/9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(180,210,255,0.1), 0 30px 80px rgba(0,0,0,0.8);
+}
+
+svg { width: 100%; height: 100%; display: block; }
+
+/* ---- Beam sweep ---- */
+@keyframes beamSweep {
+  0%   { transform: rotate(-45deg); opacity: 0; }
+  8%   { opacity: 1; }
+  45%  { transform: rotate(35deg);  opacity: 0.9; }
+  55%  { transform: rotate(35deg);  opacity: 0; }
+  60%  { transform: rotate(-45deg); opacity: 0; }
+  100% { transform: rotate(-45deg); opacity: 0; }
+}
+
+.beam-layer {
+  position: absolute;
+  /* tip of the lighthouse lantern */
+  top: 30.5%;
+  left: 50.5%;
+  width: 0; height: 0;
+  transform-origin: 0 0;
+  animation: beamSweep 6s ease-in-out infinite;
+  pointer-events: none;
+}
+.beam-layer svg { position: absolute; top: 0; left: 0; overflow: visible; }
+
+/* ---- Star twinkle ---- */
+@keyframes twinkle {
+  0%, 100% { opacity: var(--op, 0.7); }
+  50%       { opacity: 1; }
+}
+
+/* ---- Moon halo pulse ---- */
+@keyframes halo {
+  0%, 100% { opacity: 0.18; }
+  50%       { opacity: 0.32; }
+}
+
+/* ---- Light flash ---- */
+@keyframes flash {
+  0%, 45%, 55%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ---- Moon reflection ripple ---- */
+@keyframes ripple {
+  0%, 100% { opacity: 0.55; transform: scaleX(1); }
+  50%       { opacity: 0.85; transform: scaleX(1.08); }
+}
+
+/* ---- Shooting star ---- */
+@keyframes shoot {
+  0%         { opacity: 0; stroke-dashoffset: 160; }
+  5%,15%     { opacity: 1; }
+  25%        { opacity: 0; stroke-dashoffset: 0; }
+  100%       { opacity: 0; stroke-dashoffset: 0; }
+}
+
+/* ---- Seagull glide ---- */
+@keyframes glide {
+  0%   { transform: translateX(-30px) translateY(0); }
+  50%  { transform: translateX(60px) translateY(-12px); }
+  100% { transform: translateX(-30px) translateY(0); }
+}
+
+/* ---- Poem fade in ---- */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.poem {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  text-align: center;
+  padding: 20px 30px 16px;
+  background: linear-gradient(to top, rgba(2,4,18,0.95) 55%, transparent);
+  opacity: 0;
+  animation: fadeIn 2.5s ease forwards 1.2s;
+}
+.poem p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  color: #c8dcf8;
+  text-shadow: 0 0 24px rgba(100,160,255,0.5);
+  line-height: 1.6;
+}
+.poem .main { font-size: clamp(0.9rem, 2.2vw, 1.2rem); letter-spacing: 0.06em; }
+.poem .sub  { font-size: clamp(0.72rem, 1.6vw, 0.9rem); color: rgba(160,200,255,0.5); letter-spacing: 0.2em; margin-top: 5px; }

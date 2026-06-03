@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faro Romántico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="frame">
+
+    <!-- Beam layer (CSS-animated, origin at lantern tip) -->
+    <div class="beam-layer">
+      <svg width="1" height="1" overflow="visible">
+        <polygon points="0,0 -380,130 -380,80" fill="rgba(255,248,200,0.07)"/>
+        <polygon points="0,0 -380,110 -380,70" fill="rgba(255,248,200,0.05)"/>
+      </svg>
+    </div>
+
+    <svg viewBox="0 0 900 506" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Sky -->
+        <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#010208"/>
+          <stop offset="45%"  stop-color="#030820"/>
+          <stop offset="75%"  stop-color="#061435"/>
+          <stop offset="100%" stop-color="#0a1e48"/>
+        </linearGradient>
+
+        <!-- Sea -->
+        <linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#0a1e48"/>
+          <stop offset="50%"  stop-color="#060f28"/>
+          <stop offset="100%" stop-color="#020608"/>
+        </linearGradient>
+
+        <!-- Horizon glow -->
+        <radialGradient id="gHorizon" cx="50%" cy="0%" r="70%" gradientTransform="scale(1,0.4)">
+          <stop offset="0%"   stop-color="#1a3868" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#1a3868" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Moon -->
+        <radialGradient id="gMoon" cx="38%" cy="32%" r="60%">
+          <stop offset="0%"   stop-color="#f5f0e0"/>
+          <stop offset="70%"  stop-color="#ddd0a0"/>
+          <stop offset="100%" stop-color="#c8b870"/>
+        </radialGradient>
+        <radialGradient id="gMoonHalo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#8098d0" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#8098d0" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Lighthouse tower -->
+        <linearGradient id="gTower" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#161820"/>
+          <stop offset="40%"  stop-color="#262a38"/>
+          <stop offset="70%"  stop-color="#2e3242"/>
+          <stop offset="100%" stop-color="#141618"/>
+        </linearGradient>
+        <!-- Red stripe -->
+        <linearGradient id="gStripe" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#8a0e08"/>
+          <stop offset="50%"  stop-color="#cc1a10"/>
+          <stop offset="100%" stop-color="#8a0e08"/>
+        </linearGradient>
+        <!-- Lighthouse base house -->
+        <linearGradient id="gBase" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#181a22"/>
+          <stop offset="50%"  stop-color="#222430"/>
+          <stop offset="100%" stop-color="#141618"/>
+        </linearGradient>
+        <!-- Lantern glow -->
+        <radialGradient id="gLantern" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#fff8c0"/>
+          <stop offset="50%"  stop-color="#ffd040" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ff8800" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Cliff -->
+        <linearGradient id="gCliff" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#1c1a12"/>
+          <stop offset="100%" stop-color="#080806"/>
+        </linearGradient>
+
+        <!-- Moon path on water -->
+        <linearGradient id="gRefl" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#d8cc90" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#d8cc90" stop-opacity="0"/>
+        </linearGradient>
+
+        <filter id="fBlur2"><feGaussianBlur stdDeviation="2"/></filter>
+        <filter id="fBlur4"><feGaussianBlur stdDeviation="4"/></filter>
+        <filter id="fBlur8"><feGaussianBlur stdDeviation="8"/></filter>
+        <filter id="fBlur1"><feGaussianBlur stdDeviation="1"/></filter>
+
+        <!-- Vignette -->
+        <radialGradient id="gVig" cx="50%" cy="50%" r="70%">
+          <stop offset="0%"   stop-color="transparent"/>
+          <stop offset="100%" stop-color="#010208" stop-opacity="0.7"/>
+        </radialGradient>
+      </defs>
+
+      <!-- ═══════════════════════════════════════════
+           SKY
+      ═══════════════════════════════════════════ -->
+      <rect width="900" height="506" fill="url(#gSky)"/>
+
+      <!-- Horizon atmospheric glow -->
+      <rect x="0" y="270" width="900" height="100" fill="url(#gHorizon)"/>
+
+      <!-- ═══════════════════════════════════════════
+           STARS  (sparse, well-spaced)
+      ═══════════════════════════════════════════ -->
+      <!-- left quadrant -->
+      <circle cx="40"  cy="22"  r="0.9" fill="#fff" style="--op:0.6; animation:twinkle 3.2s ease-in-out infinite 0.4s" opacity="0.6"/>
+      <circle cx="88"  cy="45"  r="1.1" fill="#eef4ff" style="--op:0.75; animation:twinkle 2.6s ease-in-out infinite 1.1s" opacity="0.75"/>
+      <circle cx="135" cy="18"  r="0.7" fill="#fff" style="--op:0.5; animation:twinkle 4.1s ease-in-out infinite 2.0s" opacity="0.5"/>
+      <circle cx="170" cy="62"  r="1.0" fill="#fff" style="--op:0.7; animation:twinkle 3.5s ease-in-out infinite 0.7s" opacity="0.7"/>
+      <circle cx="210" cy="35"  r="0.8" fill="#eef4ff" style="--op:0.6; animation:twinkle 2.9s ease-in-out infinite 1.8s" opacity="0.6"/>
+      <circle cx="255" cy="14"  r="1.2" fill="#fffce8" style="--op:0.85; animation:twinkle 2.2s ease-in-out infinite 0.2s" opacity="0.85"/>
+      <circle cx="290" cy="52"  r="0.7" fill="#fff" style="--op:0.55; animation:twinkle 3.8s ease-in-out infinite 2.5s" opacity="0.55"/>
+      <circle cx="330" cy="28"  r="1.0" fill="#fff" style="--op:0.72; animation:twinkle 2.7s ease-in-out infinite 1.4s" opacity="0.72"/>
+      <circle cx="375" cy="70"  r="0.8" fill="#eef4ff" style="--op:0.58; animation:twinkle 3.6s ease-in-out infinite 0.9s" opacity="0.58"/>
+      <circle cx="410" cy="18"  r="0.9" fill="#fff" style="--op:0.68; animation:twinkle 3.0s ease-in-out infinite 1.6s" opacity="0.68"/>
+      <!-- right quadrant (avoid moon at 720,95) -->
+      <circle cx="540" cy="28"  r="1.0" fill="#eef4ff" style="--op:0.72; animation:twinkle 3.1s ease-in-out infinite 0.6s" opacity="0.72"/>
+      <circle cx="580" cy="55"  r="0.7" fill="#fff" style="--op:0.52; animation:twinkle 4.3s ease-in-out infinite 2.2s" opacity="0.52"/>
+      <circle cx="620" cy="30"  r="0.8" fill="#fff" style="--op:0.62; animation:twinkle 2.8s ease-in-out infinite 1.3s" opacity="0.62"/>
+      <circle cx="660" cy="65"  r="1.1" fill="#fffce8" style="--op:0.80; animation:twinkle 2.4s ease-in-out infinite 0.5s" opacity="0.80"/>
+      <circle cx="775" cy="28"  r="0.8" fill="#fff" style="--op:0.62; animation:twinkle 3.7s ease-in-out infinite 1.0s" opacity="0.62"/>
+      <circle cx="810" cy="55"  r="1.0" fill="#eef4ff" style="--op:0.74; animation:twinkle 2.5s ease-in-out infinite 1.9s" opacity="0.74"/>
+      <circle cx="850" cy="22"  r="0.7" fill="#fff" style="--op:0.53; animation:twinkle 4.0s ease-in-out infinite 3.0s" opacity="0.53"/>
+      <circle cx="878" cy="48"  r="1.2" fill="#fffce8" style="--op:0.88; animation:twinkle 2.1s ease-in-out infinite 0.8s" opacity="0.88"/>
+      <!-- a few mid-sky -->
+      <circle cx="60"  cy="78"  r="0.7" fill="#fff" style="--op:0.50; animation:twinkle 3.9s ease-in-out infinite 1.7s" opacity="0.50"/>
+      <circle cx="155" cy="88"  r="0.8" fill="#eef4ff" style="--op:0.60; animation:twinkle 3.3s ease-in-out infinite 0.3s" opacity="0.60"/>
+      <circle cx="470" cy="80"  r="0.9" fill="#fff" style="--op:0.65; animation:twinkle 2.9s ease-in-out infinite 2.1s" opacity="0.65"/>
+      <circle cx="860" cy="80"  r="0.8" fill="#fff" style="--op:0.60; animation:twinkle 3.4s ease-in-out infinite 1.5s" opacity="0.60"/>
+      <!-- bright accent stars -->
+      <circle cx="195" cy="15"  r="1.6" fill="#fffce8" opacity="0.95" filter="url(#fBlur1)" style="--op:0.95; animation:twinkle 1.9s ease-in-out infinite 0.6s"/>
+      <circle cx="490" cy="22"  r="1.4" fill="#e8f2ff" opacity="0.90" filter="url(#fBlur1)" style="--op:0.90; animation:twinkle 2.3s ease-in-out infinite 1.2s"/>
+      <circle cx="820" cy="14"  r="1.5" fill="#fffce8" opacity="0.92" filter="url(#fBlur1)" style="--op:0.92; animation:twinkle 2.0s ease-in-out infinite 0.3s"/>
+
+      <!-- Shooting star 1 -->
+      <line x1="580" y1="38" x2="700" y2="68"
+            stroke="white" stroke-width="1.2" stroke-linecap="round"
+            stroke-dasharray="160" stroke-dashoffset="160" opacity="0"
+            style="animation: shoot 9s ease-in infinite 2s"/>
+      <!-- Shooting star 2 -->
+      <line x1="120" y1="25" x2="220" y2="50"
+            stroke="white" stroke-width="1" stroke-linecap="round"
+            stroke-dasharray="140" stroke-dashoffset="140" opacity="0"
+            style="animation: shoot 12s ease-in infinite 6s"/>
+
+      <!-- ═══════════════════════════════════════════
+           MOON
+      ═══════════════════════════════════════════ -->
+      <!-- outer soft halo -->
+      <circle cx="720" cy="95" r="75" fill="url(#gMoonHalo)" filter="url(#fBlur8)"
+              style="animation:halo 5s ease-in-out infinite"/>
+      <!-- inner halo ring -->
+      <circle cx="720" cy="95" r="52" fill="none" stroke="#8098d0"
+              stroke-width="1" opacity="0.12" filter="url(#fBlur2)"/>
+      <!-- moon disk -->
+      <circle cx="720" cy="95" r="38" fill="url(#gMoon)"/>
+      <!-- subtle craters -->
+      <circle cx="708" cy="84"  r="4.5" fill="#bba868" opacity="0.14"/>
+      <circle cx="726" cy="106" r="3.0" fill="#b8a060" opacity="0.11"/>
+      <circle cx="735" cy="88"  r="3.5" fill="#bba868" opacity="0.12"/>
+      <!-- shadow to suggest crescent -->
+      <circle cx="734" cy="89" r="32" fill="#061430" opacity="0.22"/>
+
+      <!-- ═══════════════════════════════════════════
+           SEA
+      ═══════════════════════════════════════════ -->
+      <rect x="0" y="310" width="900" height="196" fill="url(#gSea)"/>
+
+      <!-- subtle wave lines -->
+      <path d="M0,328 Q150,322 300,328 Q450,334 600,326 Q750,318 900,326"
+            stroke="#1a3868" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M0,348 Q180,342 360,348 Q540,354 720,346 Q810,342 900,346"
+            stroke="#142e58" stroke-width="0.8" fill="none" opacity="0.38"/>
+      <path d="M0,370 Q200,364 400,370 Q600,376 800,368 L900,370"
+            stroke="#0e2240" stroke-width="0.7" fill="none" opacity="0.28"/>
+      <!-- whitecap hints -->
+      <path d="M110,332 Q128,329 146,332" stroke="rgba(200,225,255,0.28)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M420,325 Q440,322 460,325" stroke="rgba(200,225,255,0.22)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M700,332 Q720,329 740,332" stroke="rgba(200,225,255,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+      <!-- Moon reflection column -->
+      <rect x="712" y="315" width="16" height="180" fill="url(#gRefl)" opacity="0.5"
+            style="animation:ripple 4s ease-in-out infinite"/>
+      <!-- horizontal ripple streaks -->
+      <ellipse cx="720" cy="325" rx="22"  ry="2.8" fill="#d8cc90" opacity="0.55" style="animation:ripple 3.5s ease-in-out infinite 0.3s"/>
+      <ellipse cx="720" cy="342" rx="35"  ry="2.5" fill="#c8bc80" opacity="0.42" style="animation:ripple 4.0s ease-in-out infinite 0.8s"/>
+      <ellipse cx="720" cy="362" rx="50"  ry="2.2" fill="#b8ac70" opacity="0.32" style="animation:ripple 4.5s ease-in-out infinite 1.3s"/>
+      <ellipse cx="720" cy="386" rx="68"  ry="1.8" fill="#a89c60" opacity="0.22" style="animation:ripple 5.0s ease-in-out infinite 1.8s"/>
+      <ellipse cx="720" cy="415" rx="88"  ry="1.4" fill="#988c50" opacity="0.14" style="animation:ripple 5.5s ease-in-out infinite 2.3s"/>
+
+      <!-- ═══════════════════════════════════════════
+           CLIFF
+      ═══════════════════════════════════════════ -->
+      <!-- Main cliff mass — centered, lighthouse will sit on top -->
+      <path d="M340,506 L330,420 Q360,370 410,355 Q450,345 490,350 Q520,355 535,380 L550,506 Z"
+            fill="url(#gCliff)"/>
+      <!-- cliff face highlight -->
+      <path d="M360,440 Q400,420 440,430 Q470,438 490,450"
+            stroke="#282420" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <path d="M370,465 Q410,448 450,455 Q478,462 500,475"
+            stroke="#201e18" stroke-width="1.0" fill="none" opacity="0.4"/>
+      <!-- sea spray at cliff base -->
+      <ellipse cx="445" cy="365" rx="55" ry="8" fill="#6080b0" opacity="0.10" filter="url(#fBlur4)"/>
+
+      <!-- ═══════════════════════════════════════════
+           LIGHTHOUSE
+           Tower centered at x=455, base y=355, top y=155
+      ═══════════════════════════════════════════ -->
+
+      <!-- Keeper's house (small building at base) -->
+      <rect x="418" y="320" width="75" height="40" rx="3" fill="url(#gBase)"/>
+      <!-- House roof -->
+      <polygon points="415,320 492,320 492,314 453,305 415,314" fill="#12141c"/>
+      <!-- House door -->
+      <path d="M447,360 L447,342 Q453,336 460,342 L460,360 Z" fill="#080810"/>
+      <!-- House window -->
+      <rect x="420" y="326" width="14" height="11" rx="1.5" fill="#0a1830" opacity="0.9"/>
+      <rect x="477" y="326" width="14" height="11" rx="1.5" fill="#0a1830" opacity="0.9"/>
+      <!-- Warm window light -->
+      <rect x="420" y="326" width="14" height="11" rx="1.5" fill="#2040a0" opacity="0.35"
+            style="animation:flash 7s ease-in-out infinite"/>
+
+      <!-- Tower body: trapezoid (wider at base, narrower at top) -->
+      <!-- Using a polygon: base 50px wide, top 36px wide -->
+      <polygon points="430,358  478,358  470,178  443,178" fill="url(#gTower)"/>
+
+      <!-- Red/white stripes (2 stripes) -->
+      <!-- Stripe 1 (lower) -->
+      <polygon points="431,318  477,318  476,298  432,298" fill="url(#gStripe)" opacity="0.9"/>
+      <!-- Stripe 2 (upper) -->
+      <polygon points="435,252  474,252  473,232  436,232" fill="url(#gStripe)" opacity="0.9"/>
+
+      <!-- Shadow side of tower -->
+      <polygon points="430,358  439,358  432,178  443,178" fill="#05050a" opacity="0.35"/>
+
+      <!-- Mid balcony ledge -->
+      <rect x="426" y="264" width="60" height="5" rx="1.5" fill="#1a1e2c"/>
+      <rect x="426" y="264" width="60" height="2" rx="1"   fill="#242838"/>
+
+      <!-- Lantern room platform -->
+      <rect x="434" y="174" width="44" height="6" rx="1.5" fill="#1c2030"/>
+
+      <!-- Lantern room glass cylinder -->
+      <rect x="438" y="148" width="36" height="26" rx="2" fill="#0e1828"/>
+      <!-- Glass panes (subtle lines) -->
+      <line x1="450" y1="148" x2="450" y2="174" stroke="#1a2840" stroke-width="0.8" opacity="0.5"/>
+      <line x1="462" y1="148" x2="462" y2="174" stroke="#1a2840" stroke-width="0.8" opacity="0.5"/>
+
+      <!-- The light itself -->
+      <rect x="438" y="148" width="36" height="26" rx="2" fill="#ffe870" opacity="0.8"
+            style="animation:flash 3s ease-in-out infinite"/>
+      <!-- Inner bright core -->
+      <ellipse cx="456" cy="161" rx="14" ry="9" fill="#fff8c0" opacity="0.95"
+               style="animation:flash 3s ease-in-out infinite"/>
+      <!-- Outer glow around lantern room -->
+      <ellipse cx="456" cy="161" rx="44" ry="26" fill="url(#gLantern)" opacity="0.6"
+               filter="url(#fBlur4)" style="animation:flash 3s ease-in-out infinite"/>
+      <ellipse cx="456" cy="161" rx="70" ry="40" fill="#ffe040" opacity="0.12"
+               filter="url(#fBlur8)" style="animation:flash 3s ease-in-out infinite"/>
+
+      <!-- Lantern room cap (roof) -->
+      <polygon points="434,148  478,148  472,134  440,134" fill="#14161e"/>
+      <!-- Finial (top spike) -->
+      <line x1="456" y1="134" x2="456" y2="120" stroke="#181c28" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="456" cy="119" r="3" fill="#1a1e2c"/>
+
+      <!-- Railing posts around lantern room -->
+      <line x1="438" y1="174" x2="438" y2="165" stroke="#1c2230" stroke-width="1.5"/>
+      <line x1="447" y1="174" x2="447" y2="165" stroke="#1c2230" stroke-width="1.5"/>
+      <line x1="456" y1="174" x2="456" y2="165" stroke="#1c2230" stroke-width="1.5"/>
+      <line x1="465" y1="174" x2="465" y2="165" stroke="#1c2230" stroke-width="1.5"/>
+      <line x1="474" y1="174" x2="474" y2="165" stroke="#1c2230" stroke-width="1.5"/>
+      <rect x="436" y="164" width="40" height="2.5" rx="1" fill="#1a2030"/>
+
+      <!-- ═══════════════════════════════════════════
+           SEAGULLS (just 2, well-spaced)
+      ═══════════════════════════════════════════ -->
+      <g style="animation:glide 16s ease-in-out infinite" transform-origin="200 200">
+        <path d="M192,202 Q200,196 208,202" stroke="#9aa8bc" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M212,198 Q220,192 228,198" stroke="#9aa8bc" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </g>
+      <g style="animation:glide 20s ease-in-out infinite 5s" transform-origin="170 230">
+        <path d="M164,228 Q170,223 176,228" stroke="#8090a8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- ═══════════════════════════════════════════
+           FOREGROUND — sea rocks (minimal)
+      ═══════════════════════════════════════════ -->
+      <ellipse cx="80"  cy="468" rx="60" ry="20" fill="#0c0a08"/>
+      <ellipse cx="80"  cy="462" rx="42" ry="13" fill="#141210"/>
+      <ellipse cx="840" cy="472" rx="50" ry="16" fill="#0c0a08"/>
+      <ellipse cx="840" cy="466" rx="36" ry="11" fill="#141210"/>
+
+      <!-- ═══════════════════════════════════════════
+           VIGNETTE
+      ═══════════════════════════════════════════ -->
+      <rect width="900" height="506" fill="url(#gVig)"/>
+    </svg>
+
+    <!-- POEM -->
+    <div class="poem">
+      <p class="main">
+        "Como el faro guía al marinero en la tormenta,<br>
+        tus ojos son la luz que me devuelve a casa."
+      </p>
+      <p class="sub">✦ &nbsp; donde el mar y el cielo se funden, allí vive nuestro amor &nbsp; ✦</p>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noche Carmesí</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="sky"></div>
+  <div class="nebula"></div>
+  <div class="moon-wrap"><div class="moon-halo"></div><div class="moon"></div></div>
+  <div class="stars" id="stars"></div>
+  <div id="clouds"></div>
+  <div class="mountains-far"></div>
+  <div class="mountains-mid"></div>
+  <div class="forest" id="forest"></div>
+  <div class="ground"></div>
+
+  <div class="lake" id="lake">
+    <div class="lake-sky-ref"></div>
+    <div class="lake-moon-ref"></div>
+    <div class="lake-shimmer"></div>
+  </div>
+
+  <!-- Main SVG: village left, bridge, village right, couple -->
+  <svg id="mainSvg" xmlns="http://www.w3.org/2000/svg"
+    style="position:absolute;bottom:0;left:0;width:100%;height:55%;pointer-events:none;"
+    viewBox="0 0 1000 550" preserveAspectRatio="xMidYMax meet">
+    <defs>
+      <linearGradient id="stoneGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#2a0040"/>
+        <stop offset="100%" stop-color="#0d0018"/>
+      </linearGradient>
+      <linearGradient id="roofGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#1e0030"/>
+        <stop offset="100%" stop-color="#0a0012"/>
+      </linearGradient>
+      <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#180028"/>
+        <stop offset="100%" stop-color="#0a0015"/>
+      </linearGradient>
+      <linearGradient id="winGlow" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#ffd060" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#ff8020" stop-opacity="0.6"/>
+      </linearGradient>
+      <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
+        <feComposite in="SourceGraphic" in2="b" operator="over"/>
+      </filter>
+      <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b"/>
+        <feComposite in="SourceGraphic" in2="b" operator="over"/>
+      </filter>
+      <!-- animated window flicker -->
+      <animate id="flick" attributeName="opacity" values="0.8;1;0.85;1;0.9" dur="3s" repeatCount="indefinite"/>
+    </defs>
+
+    <!-- ═══════════════════════════════════
+         LEFT VILLAGE (x: 0–175)
+    ═══════════════════════════════════ -->
+
+    <!-- Ground patch left -->
+    <rect x="0" y="430" width="200" height="120" fill="#0a0012"/>
+    <!-- cobblestone road -->
+    <rect x="0" y="435" width="200" height="12" fill="#130020" rx="1"/>
+
+    <!-- House L1 (big, back) -->
+    <rect x="5"  y="320" width="65" height="115" fill="url(#wallGrad)"/>
+    <polygon points="5,320 37,270 70,320" fill="url(#roofGrad)"/>
+    <!-- chimney -->
+    <rect x="48" y="278" width="8" height="22" fill="#1a0028"/>
+    <rect x="46" y="275" width="12" height="5" rx="1" fill="#220030"/>
+    <!-- windows L1 -->
+    <rect x="13" y="340" width="16" height="18" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.9;1;0.8;1;0.85" dur="4.1s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="42" y="340" width="16" height="18" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.85;1;0.9;0.75;1" dur="3.7s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="13" y="375" width="16" height="18" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="1;0.8;1;0.9;0.85" dur="5s" repeatCount="indefinite"/>
+    </rect>
+    <!-- door L1 -->
+    <rect x="28" y="400" width="18" height="35" rx="3" fill="#0e0020"/>
+    <circle cx="44" cy="419" r="2" fill="#4a0060"/>
+
+    <!-- House L2 (shorter, front-left) -->
+    <rect x="72"  y="355" width="52" height="90" fill="url(#wallGrad)"/>
+    <polygon points="72,355 98,310 124,355" fill="url(#roofGrad)"/>
+    <rect x="78"  y="370" width="14" height="15" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.8;1;0.7;1;0.9" dur="3.3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="102" y="370" width="14" height="15" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="1;0.85;1;0.8;1" dur="4.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="87" y="408" width="14" height="37" rx="2" fill="#0e0020"/>
+
+    <!-- House L3 (tall tower-ish) -->
+    <rect x="126" y="295" width="48" height="150" fill="url(#wallGrad)"/>
+    <polygon points="126,295 150,248 174,295" fill="url(#roofGrad)"/>
+    <!-- tower window round -->
+    <circle cx="150" cy="278" r="8" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.9;0.7;1;0.85;0.95" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <rect x="132" y="315" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.85;1;0.75;1;0.9" dur="3.9s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="156" y="315" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="1;0.9;1;0.8;1" dur="4.4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="132" y="350" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.7;1;0.85;1;0.9" dur="5.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="156" y="350" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="1;0.8;1;0.9;0.7" dur="3.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="141" y="395" width="18" height="50" rx="2" fill="#0e0020"/>
+
+    <!-- lantern post left -->
+    <rect x="170" y="385" width="4" height="60" fill="#1a0028"/>
+    <rect x="164" y="380" width="16" height="10" rx="2" fill="#220035"/>
+    <ellipse cx="172" cy="378" rx="8" ry="5" fill="rgba(255,200,80,0.5)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.6;1;0.7;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- ═══════════════════════════════════
+         RIGHT VILLAGE (x: 825–1000)
+    ═══════════════════════════════════ -->
+
+    <rect x="800" y="430" width="200" height="120" fill="#0a0012"/>
+    <rect x="800" y="435" width="200" height="12" fill="#130020" rx="1"/>
+
+    <!-- House R1 -->
+    <rect x="828" y="340" width="58" height="105" fill="url(#wallGrad)"/>
+    <polygon points="828,340 857,292 886,340" fill="url(#roofGrad)"/>
+    <rect x="833" y="355" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.9;0.75;1;0.85;1" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="860" y="355" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="1;0.8;0.9;1;0.7" dur="3.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="833" y="388" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.8;1;0.75;1;0.9" dur="5.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="843" y="408" width="16" height="37" rx="2" fill="#0e0020"/>
+    <!-- chimney -->
+    <rect x="870" y="300" width="7" height="20" fill="#1a0028"/>
+    <rect x="868" y="297" width="11" height="5" rx="1" fill="#220030"/>
+
+    <!-- House R2 (tall) -->
+    <rect x="888" y="300" width="55" height="145" fill="url(#wallGrad)"/>
+    <polygon points="888,300 915,252 942,300" fill="url(#roofGrad)"/>
+    <circle cx="915" cy="282" r="8" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.8;1;0.85;0.7;1" dur="5.8s" repeatCount="indefinite"/>
+    </circle>
+    <rect x="893" y="318" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="1;0.85;1;0.75;0.9" dur="4.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="918" y="318" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.75;1;0.9;1;0.8" dur="3.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="893" y="355" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.9;0.7;1;0.85;1" dur="6.1s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="918" y="355" width="14" height="16" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="1;0.9;0.8;1;0.75" dur="4.6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="906" y="406" width="18" height="39" rx="2" fill="#0e0020"/>
+
+    <!-- House R3 (small) -->
+    <rect x="948" y="370" width="48" height="75" fill="url(#wallGrad)"/>
+    <polygon points="948,370 972,330 996,370" fill="url(#roofGrad)"/>
+    <rect x="954" y="382" width="13" height="14" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.9;1;0.8;1;0.85" dur="3.1s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="975" y="382" width="13" height="14" rx="2" fill="url(#winGlow)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="1;0.75;1;0.9;0.8" dur="4.9s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="961" y="410" width="16" height="35" rx="2" fill="#0e0020"/>
+
+    <!-- lantern post right -->
+    <rect x="824" y="385" width="4" height="60" fill="#1a0028"/>
+    <rect x="818" y="380" width="16" height="10" rx="2" fill="#220035"/>
+    <ellipse cx="826" cy="378" rx="8" ry="5" fill="rgba(255,200,80,0.5)" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.7;1;0.6;1;0.8" dur="2.8s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- ═══════════════════════════════════
+         BRIDGE (connects x:174 to x:826)
+    ═══════════════════════════════════ -->
+
+    <!-- Road/path connecting village to bridge on both sides -->
+    <rect x="0"   y="435" width="180" height="12" fill="#130020"/>
+    <rect x="820" y="435" width="180" height="12" fill="#130020"/>
+    <!-- bridge road continuation -->
+    <rect x="174" y="432" width="652" height="15" fill="#130020" rx="1"/>
+
+    <!-- Water under bridge tint -->
+    <rect x="180" y="445" width="640" height="60" fill="#050010" opacity="0.5"/>
+
+    <!-- Arch 1 (left small) -->
+    <path d="M 210,490 Q 285,390 360,490" stroke="#2a0040" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M 210,490 Q 285,390 360,490" stroke="#180028" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M 210,490 Q 285,390 360,490 L 360,520 L 210,520 Z" fill="#060010" opacity="0.98"/>
+
+    <!-- Arch 2 (center large) -->
+    <path d="M 360,490 Q 500,350 640,490" stroke="#2a0040" stroke-width="24" fill="none" stroke-linecap="round"/>
+    <path d="M 360,490 Q 500,350 640,490" stroke="#180028" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M 360,490 Q 500,350 640,490 L 640,520 L 360,520 Z" fill="#060010" opacity="0.98"/>
+
+    <!-- Arch 3 (right small) -->
+    <path d="M 640,490 Q 715,390 790,490" stroke="#2a0040" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M 640,490 Q 715,390 790,490" stroke="#180028" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M 640,490 Q 715,390 790,490 L 790,520 L 640,520 Z" fill="#060010" opacity="0.98"/>
+
+    <!-- Piers -->
+    <rect x="352" y="455" width="22" height="65" rx="3" fill="url(#stoneGrad)"/>
+    <rect x="626" y="455" width="22" height="65" rx="3" fill="url(#stoneGrad)"/>
+    <rect x="202" y="480" width="20" height="40" rx="2" fill="url(#stoneGrad)"/>
+    <rect x="778" y="480" width="20" height="40" rx="2" fill="url(#stoneGrad)"/>
+
+    <!-- Deck surface -->
+    <rect x="178" y="430" width="644" height="16" rx="2" fill="url(#stoneGrad)" filter="url(#glow)"/>
+    <!-- top edge highlight -->
+    <rect x="178" y="428" width="644" height="4" rx="1" fill="#3a005a" opacity="0.8"/>
+
+    <!-- Balustrade posts (evenly spaced) -->
+    <g fill="#2d0045" filter="url(#glow)">
+      <!-- left section -->
+      <rect x="186" y="404" width="5" height="28" rx="2"/>
+      <rect x="200" y="404" width="5" height="28" rx="2"/>
+      <rect x="214" y="404" width="5" height="28" rx="2"/>
+      <rect x="228" y="404" width="5" height="28" rx="2"/>
+      <rect x="242" y="404" width="5" height="28" rx="2"/>
+      <rect x="256" y="404" width="5" height="28" rx="2"/>
+      <rect x="270" y="404" width="5" height="28" rx="2"/>
+      <rect x="284" y="404" width="5" height="28" rx="2"/>
+      <rect x="298" y="404" width="5" height="28" rx="2"/>
+      <rect x="312" y="404" width="5" height="28" rx="2"/>
+      <rect x="326" y="404" width="5" height="28" rx="2"/>
+      <rect x="340" y="404" width="5" height="28" rx="2"/>
+      <!-- center section -->
+      <rect x="368" y="404" width="5" height="28" rx="2"/>
+      <rect x="384" y="404" width="5" height="28" rx="2"/>
+      <rect x="400" y="404" width="5" height="28" rx="2"/>
+      <rect x="416" y="404" width="5" height="28" rx="2"/>
+      <rect x="432" y="404" width="5" height="28" rx="2"/>
+      <rect x="448" y="404" width="5" height="28" rx="2"/>
+      <rect x="464" y="404" width="5" height="28" rx="2"/>
+      <rect x="480" y="404" width="5" height="28" rx="2"/>
+      <rect x="496" y="404" width="5" height="28" rx="2"/>
+      <rect x="512" y="404" width="5" height="28" rx="2"/>
+      <rect x="528" y="404" width="5" height="28" rx="2"/>
+      <rect x="544" y="404" width="5" height="28" rx="2"/>
+      <rect x="560" y="404" width="5" height="28" rx="2"/>
+      <rect x="576" y="404" width="5" height="28" rx="2"/>
+      <rect x="592" y="404" width="5" height="28" rx="2"/>
+      <rect x="608" y="404" width="5" height="28" rx="2"/>
+      <rect x="622" y="404" width="5" height="28" rx="2"/>
+      <!-- right section -->
+      <rect x="648" y="404" width="5" height="28" rx="2"/>
+      <rect x="662" y="404" width="5" height="28" rx="2"/>
+      <rect x="676" y="404" width="5" height="28" rx="2"/>
+      <rect x="690" y="404" width="5" height="28" rx="2"/>
+      <rect x="704" y="404" width="5" height="28" rx="2"/>
+      <rect x="718" y="404" width="5" height="28" rx="2"/>
+      <rect x="732" y="404" width="5" height="28" rx="2"/>
+      <rect x="746" y="404" width="5" height="28" rx="2"/>
+      <rect x="760" y="404" width="5" height="28" rx="2"/>
+      <rect x="774" y="404" width="5" height="28" rx="2"/>
+      <rect x="788" y="404" width="5" height="28" rx="2"/>
+      <rect x="802" y="404" width="5" height="28" rx="2"/>
+      <rect x="816" y="404" width="5" height="28" rx="2"/>
+    </g>
+    <!-- Top handrail -->
+    <rect x="184" y="402" width="640" height="5" rx="2" fill="#3a005a" filter="url(#glow)"/>
+
+    <!-- bridge lanterns (4 posts on bridge) -->
+    <g filter="url(#softGlow)">
+      <!-- lantern 1 -->
+      <rect x="215" y="385" width="4" height="20" fill="#2a003a"/>
+      <rect x="210" y="382" width="14" height="6" rx="1" fill="#330045"/>
+      <ellipse cx="217" cy="381" rx="7" ry="4" fill="rgba(255,200,80,0.55)">
+        <animate attributeName="opacity" values="0.6;1;0.7;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+      </ellipse>
+      <!-- lantern 2 -->
+      <rect x="380" y="385" width="4" height="20" fill="#2a003a"/>
+      <rect x="375" y="382" width="14" height="6" rx="1" fill="#330045"/>
+      <ellipse cx="382" cy="381" rx="7" ry="4" fill="rgba(255,200,80,0.55)">
+        <animate attributeName="opacity" values="0.8;0.6;1;0.75;1" dur="3.1s" repeatCount="indefinite"/>
+      </ellipse>
+      <!-- lantern 3 -->
+      <rect x="616" y="385" width="4" height="20" fill="#2a003a"/>
+      <rect x="611" y="382" width="14" height="6" rx="1" fill="#330045"/>
+      <ellipse cx="618" cy="381" rx="7" ry="4" fill="rgba(255,200,80,0.55)">
+        <animate attributeName="opacity" values="0.7;1;0.65;1;0.85" dur="2.7s" repeatCount="indefinite"/>
+      </ellipse>
+      <!-- lantern 4 -->
+      <rect x="781" y="385" width="4" height="20" fill="#2a003a"/>
+      <rect x="776" y="382" width="14" height="6" rx="1" fill="#330045"/>
+      <ellipse cx="783" cy="381" rx="7" ry="4" fill="rgba(255,200,80,0.55)">
+        <animate attributeName="opacity" values="1;0.7;0.9;0.6;1" dur="3.4s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+
+    <!-- ═══════════════════════════════════
+         COUPLE on bridge (center ~x:490)
+    ═══════════════════════════════════ -->
+
+    <!-- umbrella / parasol -->
+    <!-- canopy: semicircle + ribs -->
+    <ellipse cx="492" cy="358" rx="40" ry="12" fill="#1a0030" opacity="0.95" filter="url(#glow)"/>
+    <!-- canopy top surface -->
+    <path d="M 452,358 Q 470,335 492,332 Q 514,335 532,358 Z" fill="#28004a" filter="url(#glow)"/>
+    <!-- rib lines -->
+    <line x1="492" y1="332" x2="452" y2="358" stroke="#3a006a" stroke-width="1.2" opacity="0.7"/>
+    <line x1="492" y1="332" x2="468" y2="348" stroke="#3a006a" stroke-width="1.2" opacity="0.7"/>
+    <line x1="492" y1="332" x2="482" y2="334" stroke="#3a006a" stroke-width="1.2" opacity="0.7"/>
+    <line x1="492" y1="332" x2="502" y2="334" stroke="#3a006a" stroke-width="1.2" opacity="0.7"/>
+    <line x1="492" y1="332" x2="516" y2="348" stroke="#3a006a" stroke-width="1.2" opacity="0.7"/>
+    <line x1="492" y1="332" x2="532" y2="358" stroke="#3a006a" stroke-width="1.2" opacity="0.7"/>
+    <!-- trim edge -->
+    <path d="M 452,358 Q 470,368 492,367 Q 514,368 532,358" stroke="#4a0070" stroke-width="2" fill="none"/>
+    <!-- handle -->
+    <line x1="492" y1="367" x2="492" y2="408" stroke="#2a0040" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 492,408 Q 498,416 505,412" stroke="#2a0040" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- soft glow under umbrella -->
+    <ellipse cx="492" cy="375" rx="35" ry="8" fill="rgba(180,80,220,0.08)" filter="url(#softGlow)"/>
+
+    <!-- PERSON 1 (left, slightly taller — male silhouette) -->
+    <!-- body/coat -->
+    <path d="M 471,430 Q 466,410 468,398 Q 470,390 476,388 L 484,386 Q 488,385 488,390 L 489,430 Z" fill="#0e0018"/>
+    <!-- head -->
+    <ellipse cx="478" cy="382" rx="8" ry="9" fill="#0e0018"/>
+    <!-- hair -->
+    <path d="M 470,378 Q 472,370 478,370 Q 484,370 486,378" fill="#080010"/>
+    <!-- arm holding umbrella handle -->
+    <path d="M 484,396 Q 490,400 492,408" stroke="#0e0018" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- arm around partner -->
+    <path d="M 484,400 Q 495,403 500,402" stroke="#0e0018" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+    <!-- legs -->
+    <line x1="476" y1="428" x2="473" y2="450" stroke="#0e0018" stroke-width="5" stroke-linecap="round"/>
+    <line x1="484" y1="428" x2="482" y2="450" stroke="#0e0018" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- PERSON 2 (right, slightly shorter — female silhouette) -->
+    <!-- dress/body -->
+    <path d="M 497,430 Q 495,410 496,398 Q 497,390 502,388 L 510,387 Q 515,387 514,395 L 511,430 Z" fill="#150010"/>
+    <!-- skirt flare -->
+    <path d="M 497,418 Q 494,430 490,440 Q 504,435 511,430 Q 516,440 518,445 Q 514,430 511,418 Z" fill="#150010"/>
+    <!-- head -->
+    <ellipse cx="505" cy="382" rx="7.5" ry="8.5" fill="#150010"/>
+    <!-- hair (longer) -->
+    <path d="M 497,378 Q 498,370 505,369 Q 512,369 514,376 Q 514,386 512,390" fill="#0a000c"/>
+    <!-- arm resting on partner -->
+    <path d="M 498,400 Q 490,402 487,402" stroke="#150010" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- legs -->
+    <line x1="501" y1="430" x2="499" y2="450" stroke="#150010" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="508" y1="430" x2="507" y2="450" stroke="#150010" stroke-width="4.5" stroke-linecap="round"/>
+
+    <!-- Heads leaning together (kiss / nuzzle) — overlap -->
+    <!-- lean left head right -->
+    <ellipse cx="481" cy="381" rx="8" ry="9" fill="#0e0018"/>
+    <!-- lean right head left -->
+    <ellipse cx="503" cy="381" rx="7.5" ry="8.5" fill="#150010"/>
+    <!-- heart above them -->
+    <path d="M 492,362 C 492,358 487,354 487,360 C 487,366 492,370 492,370 C 492,370 497,366 497,360 C 497,354 492,358 492,362 Z" fill="#cc0044" filter="url(#softGlow)">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- soft ground glow under couple feet -->
+    <ellipse cx="492" cy="448" rx="28" ry="5" fill="rgba(120,0,60,0.15)" filter="url(#softGlow)"/>
+
+    <!-- BRIDGE water glow -->
+    <ellipse cx="500" cy="455" rx="310" ry="10" fill="rgba(100,0,160,0.1)" filter="url(#glow)"/>
+
+  </svg>
+
+  <div class="mist"></div>
+  <div class="lightning"></div>
+  <div class="lightning lightning2"></div>
+  <div class="rain-layer" id="rain1"></div>
+  <div class="rain-layer" id="rain2"></div>
+  <div class="title">✦ Noche Carmesí ✦</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

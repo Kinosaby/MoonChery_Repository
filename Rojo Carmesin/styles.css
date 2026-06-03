@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:100vw; height:100vh; overflow:hidden; background:#000; font-family:'Cinzel Decorative',serif; }
+
+.sky { position:absolute; inset:0; background:radial-gradient(ellipse at 30% 10%, #2a003e 0%, #0d0010 40%, #000 100%); }
+.nebula {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 30% at 20% 15%, rgba(120,0,180,.35) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 20% at 75% 8%,  rgba(180,0,60,.25)  0%, transparent 65%),
+    radial-gradient(ellipse 40% 25% at 50% 20%, rgba(80,0,120,.20)  0%, transparent 60%);
+  animation:nebulaPulse 8s ease-in-out infinite alternate;
+}
+@keyframes nebulaPulse { from{opacity:.8;transform:scale(1);} to{opacity:1;transform:scale(1.03);} }
+
+.moon-wrap { position:absolute; top:6%; left:68%; width:90px; height:90px; }
+.moon {
+  width:100%; height:100%; border-radius:50%;
+  background:radial-gradient(circle at 38% 38%, #ffe0f0, #c060a0 55%, #5a004a);
+  box-shadow:0 0 30px 10px rgba(200,50,120,.6),0 0 80px 30px rgba(160,0,80,.35),0 0 160px 60px rgba(100,0,60,.2);
+  animation:moonGlow 5s ease-in-out infinite alternate;
+}
+@keyframes moonGlow {
+  from{box-shadow:0 0 30px 10px rgba(200,50,120,.6),0 0 80px 30px rgba(160,0,80,.35),0 0 160px 60px rgba(100,0,60,.2);}
+  to  {box-shadow:0 0 45px 18px rgba(220,70,140,.8),0 0 110px 45px rgba(180,0,90,.45),0 0 200px 80px rgba(120,0,70,.3);}
+}
+.moon-halo { position:absolute; inset:-40px; border-radius:50%; background:radial-gradient(circle,rgba(200,50,120,.15) 0%,transparent 70%); animation:haloSpin 20s linear infinite; }
+@keyframes haloSpin { to{transform:rotate(360deg);} }
+
+.stars { position:absolute; inset:0; pointer-events:none; }
+.star { position:absolute; border-radius:50%; animation:twinkle var(--dur) ease-in-out infinite alternate; }
+@keyframes twinkle { from{opacity:var(--lo);transform:scale(.8);} to{opacity:1;transform:scale(1.2);} }
+
+.cloud { position:absolute; border-radius:50%; filter:blur(var(--cb)); background:var(--cc); animation:cloudDrift var(--cd) ease-in-out infinite alternate; opacity:var(--co); }
+@keyframes cloudDrift { from{transform:translateX(-2%);} to{transform:translateX(2%);} }
+
+.mountains-far {
+  position:absolute; bottom:30%; width:100%; height:28%;
+  background:radial-gradient(ellipse 120% 100% at 50% 110%, rgba(40,0,60,.9) 0%, transparent 70%);
+  clip-path:polygon(0% 100%,0% 65%,5% 55%,10% 68%,15% 40%,22% 58%,28% 30%,33% 52%,40% 20%,47% 45%,52% 10%,57% 42%,63% 25%,68% 50%,73% 35%,78% 55%,83% 45%,88% 60%,93% 50%,100% 65%,100% 100%);
+  filter:blur(1px);
+}
+.mountains-mid {
+  position:absolute; bottom:22%; width:100%; height:22%;
+  background:linear-gradient(to bottom,#1a0025,#0a0015);
+  clip-path:polygon(0% 100%,0% 70%,7% 50%,13% 72%,20% 38%,28% 65%,35% 28%,42% 58%,50% 15%,57% 50%,64% 22%,70% 55%,76% 40%,82% 62%,88% 48%,94% 65%,100% 55%,100% 100%);
+  box-shadow:inset 0 -15px 40px rgba(120,0,40,.3);
+}
+
+.ground { position:absolute; bottom:0; width:100%; height:20%; background:linear-gradient(to bottom,#0d0018 0%,#060010 50%,#000 100%); }
+.forest { position:absolute; bottom:19%; width:100%; height:18%; }
+.tree { position:absolute; bottom:0; width:var(--w); height:var(--h); background:#000; clip-path:polygon(50% 0%,5% 100%,95% 100%); filter:drop-shadow(0 0 6px rgba(80,0,120,.5)); }
+
+.lake {
+  position:absolute; bottom:3%; left:12%; width:76%; height:16%;
+  background:radial-gradient(ellipse 100% 100% at 50% 80%, #06001a 0%, #0e001e 50%, #080014 100%);
+  border-radius:50%;
+  box-shadow:0 0 50px 12px rgba(80,0,120,.3), inset 0 6px 30px rgba(120,0,180,.15);
+  overflow:hidden;
+}
+.lake-sky-ref { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(50,0,80,.35) 0%,transparent 70%); }
+.lake-moon-ref { position:absolute; left:64%; top:5%; transform:translateX(-50%); width:10px; height:85%; background:linear-gradient(to bottom,rgba(220,120,190,.6),rgba(160,60,130,.25),transparent); border-radius:50%; filter:blur(3px); animation:refWaver 4s ease-in-out infinite alternate; }
+@keyframes refWaver { from{transform:translateX(-50%) scaleX(1);opacity:.7;} to{transform:translateX(-44%) scaleX(1.5);opacity:1;} }
+.lake-shimmer { position:absolute; width:100%; height:100%; background:repeating-linear-gradient(180deg,transparent 0px,transparent 3px,rgba(120,0,160,.05) 4px,transparent 5px); animation:shimmerMove 3s linear infinite; }
+@keyframes shimmerMove { from{background-position:0 0;} to{background-position:0 20px;} }
+.lake-ripple { position:absolute; border:1px solid rgba(180,80,220,.22); border-radius:50%; animation:lakeRipple 2.8s ease-out var(--lr) infinite; width:4px; height:2px; }
+@keyframes lakeRipple { from{transform:translate(-50%,-50%) scale(0);opacity:.7;} to{transform:translate(-50%,-50%) scale(20);opacity:0;} }
+
+.mist { position:absolute; bottom:14%; width:100%; height:10%; background:linear-gradient(to bottom,transparent 0%,rgba(60,0,80,.18) 40%,rgba(80,0,100,.12) 70%,transparent 100%); animation:mistDrift 12s ease-in-out infinite alternate; filter:blur(8px); }
+@keyframes mistDrift { from{transform:translateX(-3%) scaleY(1);opacity:.7;} to{transform:translateX(3%) scaleY(1.2);opacity:1;} }
+
+.lightning { position:absolute; top:0; left:40%; width:3px; height:0; background:rgba(220,180,255,.9); box-shadow:0 0 10px 4px rgba(180,100,255,.8); transform-origin:top center; clip-path:polygon(0 0,30% 0,60% 45%,100% 45%,40% 70%,80% 70%,0% 100%,20% 65%,-20% 65%,20% 30%,-10% 30%); animation:lightningFlash 9s linear infinite; opacity:0; }
+.lightning2 { left:72%; animation-delay:4.5s; animation-duration:13s; }
+@keyframes lightningFlash { 0%,88%,92%,96%,100%{opacity:0;height:0;} 89%,93%{opacity:1;height:28%;} 90%,94%{opacity:0;height:28%;} }
+
+.rain-layer { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.drop { position:absolute; top:-60px; left:var(--rx); width:1.5px; height:var(--rh,18px); background:linear-gradient(to bottom,transparent,rgba(160,100,200,.55)); animation:fall var(--rd) linear var(--rde) infinite; transform:rotate(8deg); }
+@keyframes fall { 0%{transform:translateY(0) rotate(8deg);opacity:0;} 5%{opacity:1;} 95%{opacity:1;} 100%{transform:translateY(110vh) rotate(8deg);opacity:0;} }
+
+.title { position:absolute; top:4%; left:50%; transform:translateX(-50%); font-size:clamp(1rem,2.5vw,1.8rem); letter-spacing:.35em; color:rgba(200,80,120,.9); text-shadow:0 0 20px rgba(200,50,100,.8),0 0 40px rgba(150,0,60,.5); animation:titleFade 4s ease-in-out infinite alternate; white-space:nowrap; }
+@keyframes titleFade { from{opacity:.7;text-shadow:0 0 20px rgba(200,50,100,.8);} to{opacity:1;text-shadow:0 0 40px rgba(255,80,140,1),0 0 80px rgba(180,0,80,.6);} }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cerezos de Noche</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Layer 0: static bg (sky+moon+hills+ground+trees) — never redrawn -->
+  <canvas id="cBg"></canvas>
+  <!-- Layer 1: animated (water+blossoms+petals+fireflies+vignette) -->
+  <canvas id="cFx"></canvas>
+  <div id="overlay">
+    <div id="frase">Los cerezos florecen incluso en la oscuridad<br>como tú floreciste en mi vida.</div>
+    <div id="sub">para ti · siempre</div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
